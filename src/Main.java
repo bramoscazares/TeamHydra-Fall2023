@@ -6,6 +6,8 @@ public class Main {
 
     public static void main(String[] args) {
         printBrianMessage();
+        Dog dog = new Dog("Corndog");
+        dog.bark();
     }
 
 }
