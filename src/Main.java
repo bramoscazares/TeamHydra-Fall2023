@@ -9,6 +9,8 @@ public class Main {
         printBrianMessage();
         
         System.out.println("hey this is Xavier");
+        
+        System.out.println("Hello this is Juan and I like watermelon.");
 
     }
 
