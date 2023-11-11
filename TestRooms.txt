@@ -1,0 +1,5 @@
+1=Room 1=This is Room 1=false=2=4=3=5
+2=Room 2=This is Room 2=false=0=1=0=0
+3=Room 3=This is Room 3=false=0=0=0=1
+4=Room 4=This is Room 4=false=1=0=0=0
+5=Room 5=This is Room 5=false=0=0=1=0
