@@ -3,7 +3,6 @@ package Model;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -31,12 +30,12 @@ public class Game {
             String roomDescription = tempArray[2];
             boolean roomVisited = Boolean.parseBoolean(tempArray[3]);
             int roomNorth = Integer.parseInt(tempArray[4]);
-            int roomSouth = Integer.parseInt(tempArray[5]);
-            int roomEast = Integer.parseInt(tempArray[6]);
+            int roomEast = Integer.parseInt(tempArray[5]);  // Mike: swapped these because when I put the codequest rooms in it was in nesw format
+            int roomSouth = Integer.parseInt(tempArray[6]);
             int roomWest = Integer.parseInt(tempArray[7]);
 
-            //Adds room to room array
-            this.roomLinkedList.add(new Room(roomNum,roomName,roomDescription,roomVisited,roomNorth,roomSouth,roomEast,roomWest));
+            //Adds room to room array  Mike: swapped order of these because when I put the codequest rooms in it was in nesw format
+            this.roomLinkedList.add(new Room(roomNum,roomName,roomDescription,roomVisited,roomNorth,roomEast,roomSouth,roomWest));
         }
 
     }
