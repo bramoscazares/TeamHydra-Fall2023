@@ -45,38 +45,34 @@ public class Game {
     }
 
     public boolean move(char direction){ // By Mike
-        boolean moved = false; // set up for boolean return if no valid room to move too
         switch(direction) {
             case 'n':
                 if (currentRoom.getNorth() > 0){ //checks for if a room exist in direction
                     currentRoom.setVisited(true); // if there is a room current room will chang so mark this room as visited
                     currentRoom = roomLinkedList.get( currentRoom.getNorth()-1); // move to the room found earlier
-                }
-                moved = true; //make sure we pass back that we moved in the boolean return
-                break;
+                    return true; //make sure we pass back that we moved in the boolean return
+                } else {return false;} // return false if we couldn't move due to room not existing
             case 'e':
                 if (currentRoom.getEast() > 0){
                     currentRoom.setVisited(true);
                     currentRoom = roomLinkedList.get(currentRoom.getEast()-1);
-                }
-                moved = true;
-                break;
+                    return true;
+                } else {return false;}
             case 's':
                 if (currentRoom.getSouth() > 0){
                     currentRoom.setVisited(true);
                     currentRoom = roomLinkedList.get(currentRoom.getSouth()-1);
-                }
-                moved = true;
-                break;
+                    return true;
+                } else {return false;}
             case 'w':
                 if (currentRoom.getWest() > 0){
                     currentRoom.setVisited(true);
                     currentRoom = roomLinkedList.get(currentRoom.getWest()-1);
-                }
-                moved = true;
-                break;
+                    return true;
+                } else {return false;}
+            default:
+                return false;
         }
-        return moved;
     }
 
     public void printRoomName(){ // Mike: better than a block of code in game controller and display to do the same thing
