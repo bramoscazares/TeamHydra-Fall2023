@@ -50,7 +50,7 @@ public class Game {
             case 'n':
                 if (currentRoom.getNorth() > 0){ //checks for if a room exist in direction
                     currentRoom.setVisited(true); // if there is a room current room will chang so mark this room as visited
-                    currentRoom = roomLinkedList.get(currentRoom.getNorth()-1); // move to the room found earlier
+                    currentRoom = roomLinkedList.get( currentRoom.getNorth()-1); // move to the room found earlier
                 }
                 moved = true; //make sure we pass back that we moved in the boolean return
                 break;
@@ -77,6 +77,10 @@ public class Game {
                 break;
         }
         return moved;
+    }
+
+    public void printRoomName(){ // Mike: better than a block of code in game controller and display to do the same thing
+        System.out.println(currentRoom.getName());
     }
 
 }
