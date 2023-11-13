@@ -17,7 +17,7 @@ public class Game {
     private FileInputStream inputStream;
     private Scanner fileIn;
 
-    protected void populateRooms(File file) throws FileNotFoundException { //ENTIRE METHOD : BRIAN
+    public void populateRooms(File file) throws FileNotFoundException { //ENTIRE METHOD : BRIAN
         //Scans file
         inputStream = new FileInputStream(file);
         fileIn = new Scanner(inputStream);

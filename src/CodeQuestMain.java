@@ -5,16 +5,14 @@ import View.Display;
 import java.io.File;
 import java.io.FileNotFoundException;
 
+/**
+ *
+ */
+
 public class CodeQuestMain {
     //Main Class that will start the game.
+    public static File testRooms = new File("TestRooms.txt");
 
-    //File Setup
-    public static File rooms = new File("rooms.txt");
-    public static  File items = new File("items.txt");
-    public static  File puzzles = new File("puzzles.txt");
-    public static  File commands = new File("UserManual.txt");
-    public static  File players = new File("playerData.txt");
-    public static  File monsters = new File("monsters.txt");
 
     public static void main(String[] args) throws FileNotFoundException {
 
@@ -27,6 +25,10 @@ public class CodeQuestMain {
         //Game setup
 //        controller.addGameFiles(rooms,items,puzzles,commands,players,monsters);
 //        controller.setupGame();
+
+        //TEST SETUP
+        game.populateRooms(testRooms);
+        game.setFirstRoom();
 
         //Game Start
         controller.startGame();

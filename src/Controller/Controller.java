@@ -61,6 +61,11 @@ public class Controller {
         return string; //Brian
     }
 
+    public void setupGame() throws FileNotFoundException {
+        game.populateRooms(gameFiles.get(0));
+        game.setFirstRoom();
+    }
+
 
 
 
