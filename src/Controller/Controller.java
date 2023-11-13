@@ -30,8 +30,6 @@ public class Controller {
             //Prints room description
             //display.displayRoomInfo(game.getCurrentRoom());
 
-
-
             System.out.println("What would you like to do? Type 'help' for commands."); //Brian
             String userInput = input.nextLine();//Brian
 

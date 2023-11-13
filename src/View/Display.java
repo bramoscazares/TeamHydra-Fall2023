@@ -3,13 +3,14 @@ package View;
 public class Display {
 
 
-    public void printSeperator(){
+    public void printSeperator(){ // Method: Brian
         System.out.println("\n--------------------------------------------------------------------------------------------------------------");
-    } //Personal styling for the user
+    }
 
 
-    public void printInvaldInput() {
+    public void printInvaldInput() {  // Method: Brian
         System.out.println("Invalid input. Try again.");
+
     }
 
 
