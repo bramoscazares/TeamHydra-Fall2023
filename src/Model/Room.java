@@ -96,6 +96,6 @@ public class Room {
 
     // toString override
     @Override
-    public String toString(){return id + ' ' + name;}
+    public String toString(){return id + " " + name;}
 
 }
