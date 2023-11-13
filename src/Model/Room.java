@@ -2,113 +2,100 @@ package Model;
 
 import java.util.ArrayList;
 
+/* By group agreement and assessment of prexisting code we have all agreed to use Brian's clean and easy to read code for the basis of the group assignment
+* The following code is in large part property of Brian Ramos Cazares, with adjustments made by Michael Hopkins
+*/
 public class Room {
-    private int room;
-    private String roomName;
-    private String roomDescription;
-    private boolean roomVisited;
-    private int roomNorth;
-    private int roomSouth;
-    private int roomEast;
-    private int roomWest;
 
-    private ArrayList<Item> roomInventory = new ArrayList<>();
+    private int id;
+
+    private String name;
+
+    private String desc;
+
+    private boolean visited;
+
+    private int north;
+
+    private int east;
+
+    private int south;
+
+    private int west;
+
+    private ArrayList<Item> roomItems = new ArrayList<>();
+
     private Puzzle roomPuzzle;
+
     private Monster monster;
 
-
-    public Room(int room, String roomName, String roomDescription, boolean roomVisited, int roomNorth, int roomSouth, int roomEast, int roomWest) {
-        this.room = room;
-        this.roomName = roomName;
-        this.roomDescription = roomDescription;
-        this.roomVisited = roomVisited;
-        this.roomNorth = roomNorth;
-        this.roomSouth = roomSouth;
-        this.roomEast = roomEast;
-        this.roomWest = roomWest;
+    // Constructor
+    public Room(int room, String name, String desc, boolean visited, int north, int east, int south, int west) {
+        this.id = room;
+        this.name = name;
+        this.desc = desc;
+        this.visited = visited;
+        this.north = north;
+        this.east = east;
+        this.south = south;
+        this.west = west;
     }
 
-    public int getRoom() {
-        return room;
+    // Getters and Setters
+
+
+    public int getId() {return id;}
+
+    public void setId(int id) {this.id = id;}
+
+    public String getName() {return name;}
+
+    public void setName(String name) {this.name = name;}
+
+    public String getDesc() {return desc;}
+
+    public void setDesc(String desc) {this.desc = desc;}
+
+    public boolean isVisited() {return visited;}
+
+    public void setVisited(boolean visited) {this.visited = visited;}
+
+    public int getNorth() {return north;}
+
+    public void setNorth(int north) {this.north = north;}
+
+    public int getEast() {return east;}
+
+    public void setEast(int east) {this.east = east;}
+
+    public int getSouth() {return south;}
+
+    public void setSouth(int south) {this.south = south;}
+
+    public int getWest() {return west;}
+
+    public void setWest(int west) {this.west = west;}
+
+    public ArrayList<Item> getRoomItems() {return roomItems;}
+
+    public void setRoomItems(ArrayList<Item> roomItems) {
+        this.roomItems = roomItems;
     }
 
-    public void setRoom(int room) {
-        this.room = room;
-    }
+    public Puzzle getRoomPuzzle() {
+        return roomPuzzle;}
 
-    public String getRoomName() {
-        return roomName;
-    }
-
-    public void setRoomName(String roomName) {
-        this.roomName = roomName;
-    }
-
-    public String getRoomDescription() {
-        return roomDescription;
-    }
-
-    public void setRoomDescription(String roomDescription) {
-        this.roomDescription = roomDescription;
-    }
-
-    public boolean isRoomVisited() {
-        return roomVisited;
-    }
-
-    public void setRoomVisited(boolean roomVisited) {
-        this.roomVisited = roomVisited;
-    }
-
-    public int getRoomNorth() {
-        return roomNorth;
-    }
-
-    public void setRoomNorth(int roomNorth) {
-        this.roomNorth = roomNorth;
-    }
-
-    public int getRoomSouth() {
-        return roomSouth;
-    }
-
-    public void setRoomSouth(int roomSouth) {
-        this.roomSouth = roomSouth;
-    }
-
-    public int getRoomEast() {
-        return roomEast;
-    }
-
-    public void setRoomEast(int roomEast) {
-        this.roomEast = roomEast;
-    }
-
-    public int getRoomWest() {
-        return roomWest;
-    }
-
-    public void setRoomWest(int roomWest) {
-        this.roomWest = roomWest;
-    }
-
-    public ArrayList<Item> getRoomInventory(){ return roomInventory; }
-
-    public void setRoomPuzzle(Puzzle puzzle){
-        this.roomPuzzle = puzzle;
-    }
-
-    public Puzzle getRoomPuzzle(){
-        return roomPuzzle;
-    }
-
-    public void setMonster(Monster monster) {
-        this.monster = monster;
-    }
+    public void setRoomPuzzle(Puzzle roomPuzzle) {
+        this.roomPuzzle = roomPuzzle;}
 
     public Monster getMonster() {
-        return monster;
-    }
+        return monster;}
 
+    public void setMonster(Monster monster) {
+        this.monster = monster;}
+
+    // toString override
+    @Override
+    public String toString(){return id + " " + name;}
 
 }
