@@ -27,30 +27,21 @@ public class Controller {
     public void startGame() throws FileNotFoundException{
         while (!gameOver) {
 
-            //monsterCheck(); //Checks if Room has a monster
-//            if (!game.playerCheck()) {
-//                display.printBadEnding(game.player);
-//                gameOver = !gameOver;
-//                break;
-//            }
-
             //Prints room description
             //display.displayRoomInfo(game.getCurrentRoom());
 
-            //puzzleCheck(); //Checks if Room has a puzzle
-
-            System.out.println("What would you like to do? Type 'help' for commands.");
-            String userInput = input.nextLine();
+            System.out.println("What would you like to do? Type 'help' for commands."); //Brian
+            String userInput = input.nextLine();//Brian
 
             //Passes user input to command processing method
-            userCommand(userInput);
+            userCommand(userInput);//Brian
 
-            display.printSeperator();
+            display.printSeperator(); //Brian
         }
 
     }
 
-    public void userCommand(String input){
+    public void userCommand(String input){ //Entire Method: Brian
         input = input.toLowerCase();
         String item = splitCommand(input);
 
@@ -62,12 +53,12 @@ public class Controller {
 
     }
 
-    public String splitCommand(String string){
-        String[] listString = string.split(" ");
+    public String splitCommand(String string){ //Brian
+        String[] listString = string.split(" "); //Brian
 
-        if(listString.length>1){ return listString[1]; }
+        if(listString.length>1){ return listString[1]; } //Brian
 
-        return string;
+        return string; //Brian
     }
 
 
