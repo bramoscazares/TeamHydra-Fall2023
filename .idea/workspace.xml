@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="afff5d3a-205a-4f78-8765-f441de3c7b96" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TestRooms.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/CodeQuestMain.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/Controller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Entity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Item.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Monster.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Model/Puzzle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/Display.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Player.java" afterDir="false" />
-    </list>
+    <list default="true" id="afff5d3a-205a-4f78-8765-f441de3c7b96" name="Changes" comment="Added rooms.txt&#10;Added framework for Room class" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,6 +19,20 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "MHopkins1gg"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="092008de-4b6c-429e-a743-36553dc59d1e" />
+        <option name="url" value="https://github.com/bramoscazares/TeamHydra-Fall2023.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="7g68p8s4" />
@@ -76,6 +78,15 @@
       <option name="presentableId" value="Default" />
       <updated>1696544346829</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added rooms.txt&#10;Added framework for Room class">
+      <option name="closed" value="true" />
+      <created>1699838363940</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1699838363940</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -94,5 +105,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added rooms.txt&#10;Added framework for Room class" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added rooms.txt&#10;Added framework for Room class" />
   </component>
 </project>
