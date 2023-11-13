@@ -14,7 +14,7 @@ public class Display {
 
     }
 
-    public void printinvalidDirection() { // Method: Mike for when a room does not exist in the direction imput
+    public void printInvalidDirection() { // Method: Mike for when a room does not exist in the direction imput
         System.out.println("You cannot move in that direction.");
     }
 
