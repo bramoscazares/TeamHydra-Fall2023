@@ -6,8 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="30aa5fde-e4e5-4dce-85ae-73d095607a72" name="Changes" comment="Mike fixed lines from rooms.txt, added printRoomName to game, used printRoomName in Controller">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/CodeQuestMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/CodeQuestMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/Controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/Controller/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/Dog.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/Model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/Model/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/Model/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/Model/Room.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/View/Display.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/View/Display.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Room.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +24,9 @@
   </component>
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="mikebranch" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -28,9 +39,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2Y81wfDuXSFRzbnwYIFcpu0Wv5l" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -56,6 +67,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CodeQuestMain" />
+        <item itemvalue="Application.CodeQuestMain" />
         <item itemvalue="Application.CodeQuestMain" />
       </list>
     </recent_temporary>
@@ -111,6 +124,17 @@
     </task>
     <option name="localTasksCounter" value="6" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Changed the room scan and fill in game in order to account for my clockwise based nesw organization I did in the rooms.txt file" />

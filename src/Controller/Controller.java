@@ -65,6 +65,8 @@ public class Controller {
             if(!(game.move('w'))){
                 display.printInvalidDirection();
             }
+        } else if (input.equalsIgnoreCase("search")){
+            game.searchRoom();
         } else { // Mike: Stopped adding in front of this else
             display.printInvaldInput();
         }

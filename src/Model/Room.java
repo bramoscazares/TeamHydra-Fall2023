@@ -79,6 +79,8 @@ public class Room {
 
     public ArrayList<Item> getRoomItems() {return roomItems;}
 
+    public Item getItem(int itemSpotInArray) {return  roomItems.get(itemSpotInArray);}
+
     public void setRoomItems(ArrayList<Item> roomItems) {
         this.roomItems = roomItems;
     }
