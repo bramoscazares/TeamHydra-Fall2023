@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="30aa5fde-e4e5-4dce-85ae-73d095607a72" name="Changes" comment="Changed the room scan and fill in game in order to account for my clockwise based nesw organization I did in the rooms.txt file">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CodeQuestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CodeQuestMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.java" afterDir="false" />
+    <list default="true" id="30aa5fde-e4e5-4dce-85ae-73d095607a72" name="Changes" comment="fixed typos">
       <change beforePath="$PROJECT_DIR$/src/Model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Display.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,11 +75,29 @@
       <option name="project" value="LOCAL" />
       <updated>1699905690838</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Mike: Added movement command ifs to controller, move class to game, printinvalidDirection to display">
+      <option name="closed" value="true" />
+      <created>1699909289888</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1699909289888</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fixed typos">
+      <option name="closed" value="true" />
+      <created>1699909333973</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1699909333973</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Changed the room scan and fill in game in order to account for my clockwise based nesw organization I did in the rooms.txt file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed the room scan and fill in game in order to account for my clockwise based nesw organization I did in the rooms.txt file" />
+    <MESSAGE value="Mike: Added movement command ifs to controller, move class to game, printinvalidDirection to display" />
+    <MESSAGE value="fixed typos" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed typos" />
   </component>
 </project>
