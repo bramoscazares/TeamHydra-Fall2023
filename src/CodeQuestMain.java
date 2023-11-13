@@ -29,6 +29,7 @@ public class CodeQuestMain {
         //TEST SETUP
         game.populateRooms(testRooms);
         game.setFirstRoom();
+        game.populateHelp(new File("gameData/GameHelp.txt"));
 
         //Game Start
         controller.startGame();

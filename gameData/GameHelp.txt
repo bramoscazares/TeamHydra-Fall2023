@@ -1,0 +1,16 @@
+CodeQuest Guide:
+
+Welcome to CodeQuest Academy, a prestigious middle school for aspiring young
+programmers! As a 13-year-old student, you've been granted access to the academy's
+virtual training facility, the "Digital Dungeon." In this text-based educational game,
+you'll navigate through 20 rooms, each filled with programming challenges, treasures,
+and creatures of the digital realm. Your mission at CodeQuest Academy is to develop
+your coding skills by conquering the Digital Dungeon's challenges. Can you emerge
+as a coding master and graduate from this educational adventure with flying colors?
+
+
+Commands/Controls:
+Type the following commands to perform its respective action
+
+help: Enter the help interface. Availible at any time in the game.
+

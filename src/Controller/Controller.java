@@ -7,15 +7,17 @@ import View.Display;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 
 public class Controller {
-    private Game game;
-    private Display display;
-    private Scanner input;
+    private Game game;  //Brian
+    private Display display;  //Brian
+    private Scanner input;  //Brian
 
-    private ArrayList<File> gameFiles = new ArrayList<>();
+    private ArrayList<File> gameFiles = new ArrayList<>();  //Brian
+    private HashMap<String,File> gameFilesAlt = new HashMap<>();  //Brian
 
     private boolean gameOver = false;
 
@@ -44,13 +46,15 @@ public class Controller {
     }
 
     public void userCommand(String input){ //Entire Method: Brian
-        input = input.toLowerCase();
-        String item = splitCommand(input);
+        input = input.toLowerCase();  //Brian
+        String item = splitCommand(input);  //Brian
 
-        if (input.equalsIgnoreCase("quit")){
-            gameOver = true;
+        if (input.equalsIgnoreCase("quit")){  //Brian
+            gameOver = true;  //Brian
+        } else if (input.equalsIgnoreCase("help")){  //Brian
+            help(); //Brian
         } else {
-            display.printInvaldInput();
+            display.printInvaldInput(); //Brian
         }
 
     }
@@ -66,6 +70,22 @@ public class Controller {
     public void setupGame() throws FileNotFoundException {
         game.populateRooms(gameFiles.get(0));
         game.setFirstRoom();
+    }
+
+    private void help() {
+        //ENTIRE METHOD : Brian
+
+        display.printHelp(game.gameHelpArrayList); //Brian
+        display.printHelpReturn();  //Brian
+        String userInput = input.nextLine();  //Brian
+        while (true){
+            if(userInput.equalsIgnoreCase("return")){  //Brian
+                break;  //Brian
+            } else {  //Brian
+              display.printInvaldInput();  //Brian
+            }
+            userInput = input.nextLine();  //Brian
+        }
     }
 
 

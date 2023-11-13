@@ -1,5 +1,7 @@
 package View;
 
+import java.util.ArrayList;
+
 public class Display {
 
 
@@ -14,5 +16,15 @@ public class Display {
     }
 
 
+    public void printHelp(ArrayList<String> gameHelpArrayList) {
+        printSeperator();
+        for(String s: gameHelpArrayList) {
+            System.out.println(s);
+        }
+        printSeperator();
+    }
 
+    public void printHelpReturn() {
+        System.out.println("\nType 'return' to exit help.");
+    }
 }
