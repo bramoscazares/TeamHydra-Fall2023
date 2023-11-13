@@ -49,7 +49,23 @@ public class Controller {
 
         if (input.equalsIgnoreCase("quit")){
             gameOver = true;
-        } else {
+        } else if (input.equalsIgnoreCase("n")){ // Mike: started adding here, looks for n input to move north
+            if(!game.move('n')){ // tries to move to the direction and finds out if it was a valid move, two birds one stone
+                display.printinvalidDirection();
+            };
+        } else if (input.equalsIgnoreCase("e")){ //as above but e for east
+            if(!game.move('e')){
+                display.printinvalidDirection();
+            };
+        } else if (input.equalsIgnoreCase("s")){ //as above but s for south
+            if(!game.move('s')){
+                display.printinvalidDirection();
+            };
+        } else if (input.equalsIgnoreCase("w")){ //as above but w for weast and for wumbo
+            if(!game.move('w')){
+                display.printinvalidDirection();
+            };
+        } else { // Mike: Stopped adding in front of this else
             display.printInvaldInput();
         }
 

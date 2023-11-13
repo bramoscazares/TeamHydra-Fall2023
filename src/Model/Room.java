@@ -41,8 +41,9 @@ public class Room {
         this.west = west;
     }
 
-    // Getters and Setters
 
+
+    // Getters and Setters
 
     public int getId() {return id;}
 

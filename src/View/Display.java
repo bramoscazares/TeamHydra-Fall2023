@@ -7,12 +7,15 @@ public class Display {
         System.out.println("\n--------------------------------------------------------------------------------------------------------------");
     }
 
+    public void showRoom(){}
 
     public void printInvaldInput() {  // Method: Brian
         System.out.println("Invalid input. Try again.");
 
     }
 
-
+    public void printinvalidDirection() { // Method: Mike for when a room does not exist in the direction imput
+        System.out.println("You cannot move in that direction.");
+    }
 
 }
