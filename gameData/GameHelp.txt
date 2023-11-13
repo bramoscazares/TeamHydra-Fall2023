@@ -13,4 +13,5 @@ Commands/Controls:
 Type the following commands to perform its respective action
 
 help: Enter the help interface. Availible at any time in the game.
+quit: Exits the game entirely.
 
