@@ -40,6 +40,29 @@ public class Game {
         }
 
     }
+    
+    protected void populateItems(File file) throws FileNotFoundException {
+        //Scans file
+        inputStream = new FileInputStream(file);
+        fileIn = new Scanner(inputStream);
+
+        //Reads file
+        while (fileIn.hasNext()) {
+            String[] tempArray = fileIn.nextLine().split("=");
+            
+            String itemID = tempArray[0];
+            String itemName = tempArray[1];
+            String itemDescription = tempArray[2];
+            int itemRoomLocation = Integer.parseInt(tempArray[3]);
+            String itemType = tempArray[4];
+            boolean equipable = Boolean.parseBoolean(tempArray[5]);
+            boolean usable = Boolean.parseBoolean(tempArray[6]);
+            int healthPoints = Integer.parseInt(tempArray[7]);
+            int attackPoints = Integer.parseInt(tempArray[8]);
+
+            this.itemArrayList.add(new Item(itemID, itemName, itemDescription,itemRoomLocation,itemType, equipable, usable, healthPoints,attackPoints));
+        }
+    }
 
     public void setFirstRoom(){
         currentRoom = roomLinkedList.get(0);
