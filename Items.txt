@@ -1,4 +1,4 @@
-A1~Health Potion~A vial of glowing liquid instantly restores your health when consumed.~1~Potion~false~true~0~15
+A1~Health Potion~A vial of glowing liquid instantly restores your health when consumed.~1,2,3,4,5,6,7,10~Potion~false~true~0~15
 A2~Enchanted Puzzle Book~A mythical book filled with hints to some of the Digital Dungeon's trickiest puzzles.~9~Support~false~false~0~0
 A3~Byteblade~A razor-sharp sword infused with the power of digital bytes, making it deadly against digital foes.~1~Weapon~true~false~10~0
 A4~Code Sword~A finely crafted sword infused with the power of code.~6~Weapon~true~false~30~0
