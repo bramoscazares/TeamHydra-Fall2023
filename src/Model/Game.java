@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Game {
 
     private LinkedList<Room> roomLinkedList = new LinkedList<>();  //Brian
-
+    private ArrayList<Puzzle> puzzleArrayList = new ArrayList<>();
 
     public ArrayList<String> gameHelpArrayList = new ArrayList<>(); //Brian
 
@@ -215,4 +215,27 @@ public class Game {
         }
     }
 
+    public void populatePuzzles(File file) throws FileNotFoundException {
+        //Scans File
+        inputStream = new FileInputStream(file);
+        fileIn = new Scanner(inputStream);
+
+        //Reads file
+        while(fileIn.hasNext()){
+            String[] tempArray = fileIn.nextLine().split("#");
+            String puzzleObjectId = tempArray[0];
+            String puzzleName = tempArray[1];
+            String puzzleDesc = tempArray[2];
+            int puzzleRoomLocation = Integer.parseInt(tempArray[3]);
+            String puzzleAnswer = tempArray[4];
+            String puzzleHint = tempArray[5];
+            int puzzleAttempts = Integer.parseInt(tempArray[6]);
+            boolean solved = Boolean.parseBoolean(tempArray[7]);
+            //Adds Puzzle to array
+
+            this.puzzleArrayList.add(new Puzzle(puzzleObjectId, puzzleName, puzzleDesc , puzzleRoomLocation, puzzleAnswer, puzzleHint,  puzzleAttempts ,solved));
+
+        }
+
+    } //Adds Puzzles into an ArrayList
 }
