@@ -73,6 +73,8 @@ public class Controller {
             game.searchRoom(wordyCommand);
         } else if (input.equalsIgnoreCase("isVisitedRoom")) {
             game.isVisitedRoom();
+        } else if (input.equalsIgnoreCase("m-info")){ // Mike: Stopped adding in front of this else
+            game.mInfo();
         } else if (input.equalsIgnoreCase("help")){  //Brian
             help(); //Brian
         } else {
@@ -88,7 +90,7 @@ public class Controller {
 
         return string; //Brian
     }
-    
+
     public void addGameFiles(File rooms, File items) {
     	gameFiles.add(rooms);
     	gameFiles.add(items);

@@ -18,14 +18,15 @@ public class Game {
 
     private Player player = new Player("P1","Generic","This is a generic description.",1,100,100,false);  //Brian
 
-    private Room currentRoom;  //Brian
-    private FileInputStream inputStream;  //Brian
-    private Scanner fileIn;  //Brian
+    private Room currentRoom; //Brian
+    private FileInputStream inputStream; //Brian
+    private Scanner fileIn; //Brian
 
 
 
-    public void populateRooms(File file) throws FileNotFoundException {
+    public void populateRooms(File file) throws FileNotFoundException { //ENTIRE METHOD : BRIAN
         //ENTIRE METHOD : BRIAN
+
 
         //Scans file
         inputStream = new FileInputStream(file);
@@ -49,7 +50,7 @@ public class Game {
         }
 
     }
-    
+
     public void populateItems(File file) throws FileNotFoundException {
         //Scans file
         inputStream = new FileInputStream(file);
@@ -58,7 +59,7 @@ public class Game {
         //Reads file
         while (fileIn.hasNext()) {
             String[] tempArray = fileIn.nextLine().split("~");
-            
+
             String itemID = tempArray[0];
             String itemName = tempArray[1];
             String itemDescription = tempArray[2];
@@ -84,10 +85,32 @@ public class Game {
         }
     } //Adds Commands into an ArrayList
 
+    public void populateMons(File file) throws FileNotFoundException { //From Brian's "populateRooms()", 75% Modified by Mohammed to fit Monsters
+        //Scans file
+        inputStream = new FileInputStream(file);
+        fileIn = new Scanner(inputStream);
+
+        //Reads file
+        while(fileIn.hasNext()){
+            String[] tempArray = fileIn.nextLine().split("=");
+
+            //Mo: assigns parts of file line to temp variables, then variables into Monster constructor
+            String monID = tempArray[0];
+            String monName = tempArray[1];
+            String monDesc = tempArray[2];
+            int LcnRoomID = Integer.parseInt(tempArray[3]);
+            int MonHP = Integer.parseInt(tempArray[4]);
+            int MonATK = Integer.parseInt(tempArray[5]);
+
+            this.roomLinkedList.get(LcnRoomID).setMonster(new Monster(monID,monName,monDesc,LcnRoomID,MonHP,MonATK));
+        }//end while
+
+    }//end populateMons(), by Mohammed
+
     public void setFirstRoom(){
         currentRoom = roomLinkedList.get(0);
     }
-    
+
     public void pickupItem (String itemName) {
     	for (Item roomitem : currentRoom.getRoomItems()) {
     		if (roomitem.getName().equalsIgnoreCase(itemName)) {
@@ -98,7 +121,7 @@ public class Game {
     		}
     	}
     }
-    
+
     public void dropItem (String itemName) {
     	for(Item i: player.playerInventory) {
     		if (i.getName().equalsIgnoreCase(itemName)) {
@@ -238,4 +261,16 @@ public class Game {
         }
 
     } //Adds Puzzles into an ArrayList
+
+    public void mInfo() { // Mo: method for m-info command, returns Info
+        Room Lcn = this.roomLinkedList.get(this.player.getRoomLocation());
+        Monster Mon = Lcn.getMonster();
+        if (Mon == null) System.out.println("There is no monster in this room.");
+        else {
+            System.out.println("Name: " + Mon.getName());
+            System.out.println(Mon.getDescription());
+            System.out.println("HP: " + Mon.getHealthPoints());
+            System.out.println("ATK: " + Mon.getAttackPoints());
+        }//end if else
+    }//end mInfo(), Mohammed
 }
