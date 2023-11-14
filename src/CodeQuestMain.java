@@ -13,6 +13,8 @@ public class CodeQuestMain {
     //Main Class that will start the game.
     public static File testRooms = new File("rooms.txt"); // Mike: testing rooms.txt
 
+	public static File items = new File("Items.txt");
+
 
     public static void main(String[] args) throws FileNotFoundException {
 
@@ -28,6 +30,7 @@ public class CodeQuestMain {
 
         //TEST SETUP
         game.populateRooms(testRooms);
+        game.populateItems(items);
         game.setFirstRoom();
         game.populateHelp(new File("gameData/GameHelp.txt"));
 

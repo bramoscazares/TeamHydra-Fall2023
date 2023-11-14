@@ -11,13 +11,18 @@ public class Game {
 
     private LinkedList<Room> roomLinkedList = new LinkedList<>();  //Brian
 
+
     public ArrayList<String> gameHelpArrayList = new ArrayList<>(); //Brian
+
+    private ArrayList<Item> itemArrayList = new ArrayList<>();
 
     private Player player = new Player("P1","Generic","This is a generic description.",1,100,100,false);  //Brian
 
     private Room currentRoom;  //Brian
     private FileInputStream inputStream;  //Brian
     private Scanner fileIn;  //Brian
+
+
 
     public void populateRooms(File file) throws FileNotFoundException {
         //ENTIRE METHOD : BRIAN
@@ -44,6 +49,29 @@ public class Game {
         }
 
     }
+    
+    public void populateItems(File file) throws FileNotFoundException {
+        //Scans file
+        inputStream = new FileInputStream(file);
+        fileIn = new Scanner(inputStream);
+
+        //Reads file
+        while (fileIn.hasNext()) {
+            String[] tempArray = fileIn.nextLine().split("~");
+            
+            String itemID = tempArray[0];
+            String itemName = tempArray[1];
+            String itemDescription = tempArray[2];
+            int itemRoomLocation = Integer.parseInt(tempArray[3]);
+            String itemType = tempArray[4];
+            boolean equipable = Boolean.parseBoolean(tempArray[5]);
+            boolean usable = Boolean.parseBoolean(tempArray[6]);
+            int healthPoints = Integer.parseInt(tempArray[7]);
+            int attackPoints = Integer.parseInt(tempArray[8]);
+
+            this.itemArrayList.add(new Item(itemID, itemName, itemDescription,itemRoomLocation,itemType, equipable, usable, healthPoints,attackPoints));
+        }
+    }
 
     public void populateHelp(File file) throws FileNotFoundException {
         //Scans File
@@ -58,6 +86,29 @@ public class Game {
 
     public void setFirstRoom(){
         currentRoom = roomLinkedList.get(0);
+    }
+    
+    public void pickupItem (String itemName) {
+    	for (Item roomitem : currentRoom.getRoomItems()) {
+    		if (roomitem.getName().equalsIgnoreCase(itemName)) {
+    			player.getInventory().add(roomitem);
+    			currentRoom.getRoomItems().remove(roomitem);
+    			System.out.println(roomitem.getName() + " has been picked up from the room and successfully added to the player iventory.");
+    			return;
+    		}
+    	}
+    }
+    
+    public void dropItem (String itemName) {
+    	for(Item i: player.playerInventory) {
+    		if (i.getName().equalsIgnoreCase(itemName)) {
+    			currentRoom.getRoomItems().add(i);
+    			player.getInventory().remove(i);
+    			System.out.println(i.getName() + " has been dropped.");
+    			return;
+    		}
+    	}
+    	System.out.println("This item is not in your inventory.");
     }
 
     public boolean move(char direction){ // By Mike
