@@ -63,15 +63,22 @@ public class Game {
             String itemID = tempArray[0];
             String itemName = tempArray[1];
             String itemDescription = tempArray[2];
-            int itemRoomLocation = Integer.parseInt(tempArray[3]);
+            String[] itemRoomLocation = tempArray[3].split(","); // Mike: Changed to set up for parsing multiple instances of same item type in different rooms
             String itemType = tempArray[4];
             boolean equipable = Boolean.parseBoolean(tempArray[5]);
             boolean usable = Boolean.parseBoolean(tempArray[6]);
             int healthPoints = Integer.parseInt(tempArray[7]);
             int attackPoints = Integer.parseInt(tempArray[8]);
 
-            this.itemArrayList.add(new Item(itemID, itemName, itemDescription,itemRoomLocation,itemType, equipable, usable, healthPoints,attackPoints));
+            for (int i = 0; i < itemRoomLocation.length; i++) { // Mike: Makes the item multiple times
+                this.itemArrayList.add(new Item(itemID, itemName, itemDescription, Integer.parseInt(itemRoomLocation[i]),itemType, equipable, usable, healthPoints,attackPoints));
+            }
+            
         }
+        for (Item i : itemArrayList) { //Mike: Put the items in the rooms
+            roomLinkedList.get(i.getRoomLocation()-1).addItem(i);
+        }
+        
     }
 
     public void populateHelp(File file) throws FileNotFoundException {
