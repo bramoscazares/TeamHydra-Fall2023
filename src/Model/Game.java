@@ -79,11 +79,21 @@ public class Game {
         System.out.println(currentRoom.getName());
     } // By Mike
 
-    public void searchRoom(){ // By Mike
+    public void searchRoom(String[] input){ // By Mike
         Boolean hasItem = true;
         Boolean hasMonster = true;
         Boolean hasPuzzle = true;
         String output = "";
+
+        String[] listString = currentRoom.getName().split(" ");
+        if (input.length < 3 || input.length >= 4){
+            System.out.println("Invalid room name.");
+            return;
+        } else if (!(listString[0].equalsIgnoreCase(input[1]) && listString[1].equalsIgnoreCase(input[2]))){
+            System.out.println("Invalid room name.");
+            return;
+        }
+
         String s = currentRoom.getDesc().replace(".", ".\n");
         System.out.println("You have searched " + currentRoom.getName() + ".\n" + s);
 
@@ -128,6 +138,14 @@ public class Game {
             }
         }
 
+    }
+
+    public void isVisitedRoom(){ // Mike: forgive me for this but, they specifically said to add this command
+        if (currentRoom.isVisited()){
+            System.out.println("You have visited this room before.");
+        } else {
+            System.out.println("This room looks new.");
+        }
     }
 
 }

@@ -46,6 +46,7 @@ public class Controller {
     public void userCommand(String input){ //Entire Method: Brian
         input = input.toLowerCase();
         String item = splitCommand(input);
+        String[] wordyCommand = longCommand(input);
 
         if (input.equalsIgnoreCase("quit")){
             gameOver = true;
@@ -65,8 +66,10 @@ public class Controller {
             if(!(game.move('w'))){
                 display.printInvalidDirection();
             }
-        } else if (input.equalsIgnoreCase("search")){
-            game.searchRoom();
+        } else if (wordyCommand[0].equalsIgnoreCase("search")){
+            game.searchRoom(wordyCommand);
+        } else if (input.equalsIgnoreCase("isVisitedRoom")) {
+            game.isVisitedRoom();
         } else { // Mike: Stopped adding in front of this else
             display.printInvaldInput();
         }
@@ -79,6 +82,11 @@ public class Controller {
         if(listString.length>1){ return listString[1]; } //Brian
 
         return string; //Brian
+    }
+
+    public String[] longCommand(String input){ // From Mike
+        String[] listString = input.split(" "); // From Brian above
+        return listString;
     }
 
     public void setupGame() throws FileNotFoundException {
