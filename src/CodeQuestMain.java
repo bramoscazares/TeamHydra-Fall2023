@@ -11,9 +11,9 @@ import java.io.FileNotFoundException;
 
 public class CodeQuestMain {
     //Main Class that will start the game.
-    public static File testRooms = new File("rooms.txt"); // Mike: testing rooms.txt
+    public static File testRooms = new File("gameData/rooms.txt"); // Mike: testing rooms.txt
 
-	public static File items = new File("Items.txt");
+	public static File items = new File("gameData/Items.txt");
 
 
     public static void main(String[] args) throws FileNotFoundException {
