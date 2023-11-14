@@ -66,7 +66,7 @@ public class Controller {
             if(!(game.move('w'))){
                 display.printInvalidDirection();
             }
-        } else if (wordyCommand[0].equalsIgnoreCase("search")){
+        } else if (wordyCommand[0].equalsIgnoreCase("search")){ // needed a user command thing that worked
             game.searchRoom(wordyCommand);
         } else if (input.equalsIgnoreCase("isVisitedRoom")) {
             game.isVisitedRoom();
