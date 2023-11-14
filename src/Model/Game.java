@@ -3,20 +3,25 @@ package Model;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Game {
 
-    private LinkedList<Room> roomLinkedList = new LinkedList<>();
+    private LinkedList<Room> roomLinkedList = new LinkedList<>();  //Brian
 
-    private Player player = new Player("P1","Generic","This is a generic description.",1,100,100,false);
+    public ArrayList<String> gameHelpArrayList = new ArrayList<>(); //Brian
 
-    private Room currentRoom;
-    private FileInputStream inputStream;
-    private Scanner fileIn;
+    private Player player = new Player("P1","Generic","This is a generic description.",1,100,100,false);  //Brian
 
-    public void populateRooms(File file) throws FileNotFoundException { //ENTIRE METHOD : BRIAN
+    private Room currentRoom;  //Brian
+    private FileInputStream inputStream;  //Brian
+    private Scanner fileIn;  //Brian
+
+    public void populateRooms(File file) throws FileNotFoundException {
+        //ENTIRE METHOD : BRIAN
+
         //Scans file
         inputStream = new FileInputStream(file);
         fileIn = new Scanner(inputStream);
@@ -39,6 +44,17 @@ public class Game {
         }
 
     }
+
+    public void populateHelp(File file) throws FileNotFoundException {
+        //Scans File
+        inputStream = new FileInputStream(file);
+        fileIn = new Scanner(inputStream);
+
+        //Reads file
+        while(fileIn.hasNext()){
+            gameHelpArrayList.add(fileIn.nextLine()); //Adds String into array
+        }
+    } //Adds Commands into an ArrayList
 
     public void setFirstRoom(){
         currentRoom = roomLinkedList.get(0);

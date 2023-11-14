@@ -1,5 +1,7 @@
 package View;
 
+import java.util.ArrayList;
+
 public class Display {
 
 
@@ -14,8 +16,20 @@ public class Display {
 
     }
 
+
     public void printInvalidDirection() { // Method: Mike for when a room does not exist in the direction imput
         System.out.println("You cannot move in that direction.");
     }
 
+    public void printHelp(ArrayList<String> gameHelpArrayList) {
+        printSeperator();
+        for(String s: gameHelpArrayList) {
+            System.out.println(s);
+        }
+        printSeperator();
+    }
+
+    public void printHelpReturn() {
+        System.out.println("\nType 'return' to exit help.");
+    }
 }
