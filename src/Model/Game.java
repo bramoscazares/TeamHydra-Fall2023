@@ -170,4 +170,15 @@ public class Game {
         }
     }
 
+    public void mInfo() { // Mo: method for m-info command, returns Info
+        Room Lcn = this.roomLinkedList.get(this.player.getRoomLocation());
+        Monster Mon = Lcn.getMonster();
+        if (Mon == null) System.out.println("There is no monster in this room.");
+        else {
+            System.out.println("Name: " + Mon.getName());
+            System.out.println(Mon.getDescription());
+            System.out.println("HP: " + Mon.getHealthPoints());
+            System.out.println("ATK: " + Mon.getAttackPoints());
+        }//end if else
+    }//end mInfo(), Mohammed
 }

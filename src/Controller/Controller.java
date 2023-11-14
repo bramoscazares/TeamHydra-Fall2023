@@ -3,7 +3,6 @@ package Controller;
 import Model.Game;
 import View.Display;
 
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -70,7 +69,9 @@ public class Controller {
             game.searchRoom(wordyCommand);
         } else if (input.equalsIgnoreCase("isVisitedRoom")) {
             game.isVisitedRoom();
-        } else { // Mike: Stopped adding in front of this else
+        } else if (input.equalsIgnoreCase("m-info")){ // Mike: Stopped adding in front of this else
+            game.mInfo();
+        } else {
             display.printInvaldInput();
         }
 
