@@ -67,6 +67,41 @@ public class Game {
     public void setFirstRoom(){
         currentRoom = roomLinkedList.get(0);
     }
+    
+    public void pickupItem (String itemName) {
+    	if (itemName.equalsIgnoreCase("all")) {
+    		moveAllItems(currentRoom.getRoomItems(),player.playerInventory);
+    		System.out.println("You picked up all the items from the room.");
+    		return;
+    	}
+    	
+    	for (Item roomitem : currentRoom.getRoomInventory()) {
+    		if (roomitem.getName().equalsIgnoreCase(itemName)) {
+    			player.playerInventory.add(roomitem);
+    			currentRoom.getRoomInventory().remove(roomitem);
+    			System.out.println(roomitem.getName() + " has been picked up from the room and successfully added to the player iventory.");
+    			return;
+    		}
+    	}
+    }
+    
+    public void dropItem (String itemName) {
+    	if (itemName.equalsIgnoreCase("all")) {
+    		moveAllItems(player.playerInventory,currentRoom.getRoomItems());
+    		System.out.println("You have dropped all the items in your inventory.");
+    		return;
+    	}
+    	
+    	for(Item i: player.playerInventory) {
+    		if (i.getName().equalsIgnoreCase(itemName)) {
+    			currentRoom.getRoomInventory().add(i);
+    			player.playerInventory.remove(i);
+    			System.out.println(i.getName() + " has been dropped.");
+    			return;
+    		}
+    	}
+    	System.out.println("This item is not in your inventory.");
+    }
 
 
 }
