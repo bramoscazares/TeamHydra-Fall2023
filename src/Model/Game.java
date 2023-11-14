@@ -3,12 +3,14 @@ package Model;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Game {
 
     private LinkedList<Room> roomLinkedList = new LinkedList<>();
+    private ArrayList<Puzzle> puzzleArrayList = new ArrayList<>();
 
     private Player player = new Player("P1","Generic","This is a generic description.",1,100,100,false);
 
@@ -79,4 +81,27 @@ public class Game {
         System.out.println(currentRoom.getName());
     }
 
+    public void populatePuzzles(File file) throws FileNotFoundException {
+        //Scans File
+        inputStream = new FileInputStream(file);
+        fileIn = new Scanner(inputStream);
+
+        //Reads file
+        while(fileIn.hasNext()){
+            String[] tempArray = fileIn.nextLine().split("#");
+            String puzzleObjectId = tempArray[0];
+            String puzzleName = tempArray[1];
+            String puzzleDesc = tempArray[2];
+            int puzzleRoomLocation = Integer.parseInt(tempArray[3]);
+            String puzzleAnswer = tempArray[4];
+            String puzzleHint = tempArray[5];
+            int puzzleAttempts = Integer.parseInt(tempArray[6]);
+            boolean solved = Boolean.parseBoolean(tempArray[7]);
+            //Adds Puzzle to array
+
+            this.puzzleArrayList.add(new Puzzle(puzzleObjectId, puzzleName, puzzleDesc , puzzleRoomLocation, puzzleAnswer, puzzleHint,  puzzleAttempts ,solved));
+
+        }
+
+    } //Adds Puzzles into an ArrayList
 }
