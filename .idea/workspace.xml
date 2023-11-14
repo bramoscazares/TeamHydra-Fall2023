@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="30aa5fde-e4e5-4dce-85ae-73d095607a72" name="Changes" comment="Mike fixed lines from rooms.txt, added printRoomName to game, used printRoomName in Controller">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="30aa5fde-e4e5-4dce-85ae-73d095607a72" name="Changes" comment="Mike Made searchRoom in game, added getItem in room to access specific item information from room without pulling the whole array">
       <change beforePath="$PROJECT_DIR$/src/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Game.java" afterDir="false" />
     </list>
@@ -16,6 +15,9 @@
   </component>
   <component name="CodeInsightWorkspaceSettings">
     <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="mikebranch" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -28,9 +30,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2Y81wfDuXSFRzbnwYIFcpu0Wv5l" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -56,6 +58,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.CodeQuestMain" />
+        <item itemvalue="Application.CodeQuestMain" />
         <item itemvalue="Application.CodeQuestMain" />
       </list>
     </recent_temporary>
@@ -109,8 +113,27 @@
       <option name="project" value="LOCAL" />
       <updated>1699911144433</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Mike Made searchRoom in game, added getItem in room to access specific item information from room without pulling the whole array">
+      <option name="closed" value="true" />
+      <created>1699918871141</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1699918871141</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Changed the room scan and fill in game in order to account for my clockwise based nesw organization I did in the rooms.txt file" />
@@ -118,6 +141,7 @@
     <MESSAGE value="fixed typos" />
     <MESSAGE value="Mike fixed line 3 of rooms.txt missing is visited and directions for travel" />
     <MESSAGE value="Mike fixed lines from rooms.txt, added printRoomName to game, used printRoomName in Controller" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mike fixed lines from rooms.txt, added printRoomName to game, used printRoomName in Controller" />
+    <MESSAGE value="Mike Made searchRoom in game, added getItem in room to access specific item information from room without pulling the whole array" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mike Made searchRoom in game, added getItem in room to access specific item information from room without pulling the whole array" />
   </component>
 </project>

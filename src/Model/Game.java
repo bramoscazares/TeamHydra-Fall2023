@@ -77,6 +77,75 @@ public class Game {
 
     public void printRoomName(){ // Mike: better than a block of code in game controller and display to do the same thing
         System.out.println(currentRoom.getName());
+    } // By Mike
+
+    public void searchRoom(String[] input){ // By Mike
+        Boolean hasItem = true;
+        Boolean hasMonster = true;
+        Boolean hasPuzzle = true;
+        String output = "";
+
+        String[] listString = currentRoom.getName().split(" ");
+        if (input.length < 3 || input.length >= 4){
+            System.out.println("Invalid room name.");
+            return;
+        } else if (!(listString[0].equalsIgnoreCase(input[1]) && listString[1].equalsIgnoreCase(input[2]))){
+            System.out.println("Invalid room name.");
+            return;
+        }
+
+        String s = currentRoom.getDesc().replace(".", ".\n");
+        System.out.println("You have searched " + currentRoom.getName() + ".\n" + s);
+
+        if (currentRoom.getRoomItems().size() == 0){
+            hasItem = false;
+        }
+        if (currentRoom.getMonster() == null){
+            hasMonster = false;
+        }
+        if (currentRoom.getRoomPuzzle() == null){
+            hasPuzzle = false;
+        }
+
+        if (hasItem && hasMonster && hasPuzzle){
+            System.out.println("Here are the items, monsters, and puzzles, that you need to use, defeat, and solve.");
+            for (int i = 0; i < currentRoom.getRoomItems().size(); i++) {
+                output = currentRoom.getItem(i).getName() + ", " + output;
+            }
+            output = output + currentRoom.getMonster().getName();
+            output = output + ", " + currentRoom.getRoomPuzzle().getName();
+            System.out.println(output);
+        } else if (hasItem) {
+            System.out.print("Here are the items you need to use.");
+            for (int i = 0; i < currentRoom.getRoomItems().size(); i++) {
+                System.out.print(currentRoom.getItem(i).getName() + ", ");
+            }
+        } else if (!hasItem) {
+            System.out.println("There are no items you may use.");
+        }
+        if (hasMonster && !hasPuzzle){
+            System.out.println("The room has " + currentRoom.getMonster().getName() + " but no puzzles to solve.");
+        } else {
+            if (hasMonster){
+                System.out.println("The " + currentRoom.getMonster().getName() + " monster in this room.");
+            } else {
+                System.out.println("There are no monsters in this room.");
+            }
+            if (hasPuzzle){
+                System.out.println("There is the " + currentRoom.getRoomPuzzle().getName() + " puzzle in this room.");
+            } else {
+                System.out.println("There are no puzzles to solve in this room.");
+            }
+        }
+
+    }
+
+    public void isVisitedRoom(){ // Mike: forgive me for this but, they specifically said to add this command
+        if (currentRoom.isVisited()){
+            System.out.println("You have visited this room before.");
+        } else {
+            System.out.println("This room looks new.");
+        }
     }
 
 }
