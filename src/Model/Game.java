@@ -40,6 +40,28 @@ public class Game {
 
     }
 
+    public void populateMons(File file) throws FileNotFoundException { //From Brian's "populateRooms()", 75% Modified by Mohammed to fit Monsters
+        //Scans file
+        inputStream = new FileInputStream(file);
+        fileIn = new Scanner(inputStream);
+
+        //Reads file
+        while(fileIn.hasNext()){
+            String[] tempArray = fileIn.nextLine().split("=");
+
+            //Mo: assigns parts of file line to temp variables, then variables into Monster constructor
+            String monID = tempArray[0];
+            String monName = tempArray[1];
+            String monDesc = tempArray[2];
+            int LcnRoomID = Integer.parseInt(tempArray[3]);
+            int MonHP = Integer.parseInt(tempArray[4]);
+            int MonATK = Integer.parseInt(tempArray[5]);
+
+            this.roomLinkedList.get(LcnRoomID).setMonster(new Monster(monID,monName,monDesc,LcnRoomID,MonHP,MonATK));
+        }//end while
+
+    }//end populateMons(), by Mohammed
+
     public void setFirstRoom(){
         currentRoom = roomLinkedList.get(0);
     }
