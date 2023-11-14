@@ -213,10 +213,11 @@ public class Game {
             output = output + ", " + currentRoom.getRoomPuzzle().getName();
             System.out.println(output);
         } else if (hasItem) {
-            System.out.print("Here are the items you need to use.");
+            System.out.print("Here are the items you need to use. ");
             for (int i = 0; i < currentRoom.getRoomItems().size(); i++) {
-                System.out.print(currentRoom.getItem(i).getName() + ", ");
+                output = output + currentRoom.getItem(i).getName() + ", ";
             }
+            System.out.println(output);
         } else if (!hasItem) {
             System.out.println("There are no items you may use.");
         }
