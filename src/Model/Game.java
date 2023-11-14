@@ -11,6 +11,8 @@ public class Game {
 
     private LinkedList<Room> roomLinkedList = new LinkedList<>();
 
+    private ArrayList<Item> itemArrayList = new ArrayList<>();
+
     private Player player = new Player("P1","Generic","This is a generic description.",1,100,100,false);
 
     private Room currentRoom;
@@ -41,14 +43,14 @@ public class Game {
 
     }
     
-    protected void populateItems(File file) throws FileNotFoundException {
+    public void populateItems(File file) throws FileNotFoundException {
         //Scans file
         inputStream = new FileInputStream(file);
         fileIn = new Scanner(inputStream);
 
         //Reads file
         while (fileIn.hasNext()) {
-            String[] tempArray = fileIn.nextLine().split("=");
+            String[] tempArray = fileIn.nextLine().split("~");
             
             String itemID = tempArray[0];
             String itemName = tempArray[1];
@@ -69,16 +71,10 @@ public class Game {
     }
     
     public void pickupItem (String itemName) {
-    	if (itemName.equalsIgnoreCase("all")) {
-    		moveAllItems(currentRoom.getRoomItems(),player.playerInventory);
-    		System.out.println("You picked up all the items from the room.");
-    		return;
-    	}
-    	
-    	for (Item roomitem : currentRoom.getRoomInventory()) {
+    	for (Item roomitem : currentRoom.getRoomItems()) {
     		if (roomitem.getName().equalsIgnoreCase(itemName)) {
-    			player.playerInventory.add(roomitem);
-    			currentRoom.getRoomInventory().remove(roomitem);
+    			player.getInventory().add(roomitem);
+    			currentRoom.getRoomItems().remove(roomitem);
     			System.out.println(roomitem.getName() + " has been picked up from the room and successfully added to the player iventory.");
     			return;
     		}
@@ -86,16 +82,10 @@ public class Game {
     }
     
     public void dropItem (String itemName) {
-    	if (itemName.equalsIgnoreCase("all")) {
-    		moveAllItems(player.playerInventory,currentRoom.getRoomItems());
-    		System.out.println("You have dropped all the items in your inventory.");
-    		return;
-    	}
-    	
     	for(Item i: player.playerInventory) {
     		if (i.getName().equalsIgnoreCase(itemName)) {
-    			currentRoom.getRoomInventory().add(i);
-    			player.playerInventory.remove(i);
+    			currentRoom.getRoomItems().add(i);
+    			player.getInventory().remove(i);
     			System.out.println(i.getName() + " has been dropped.");
     			return;
     		}

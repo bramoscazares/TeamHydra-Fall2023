@@ -1,5 +1,7 @@
 package Model;
 
+import java.util.ArrayList;
+
 public class Player extends Entity{
 
     protected Item equippedItem;

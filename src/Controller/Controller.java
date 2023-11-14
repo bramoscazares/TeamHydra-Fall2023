@@ -71,7 +71,7 @@ public class Controller {
     public void setupGame() throws FileNotFoundException {
         game.populateRooms(gameFiles.get(0));
         game.setFirstRoom();
-        game.populateItems(gameFiles.get(1));
+        //game.populateItems(gameFiles.get(1));
     }
 
 

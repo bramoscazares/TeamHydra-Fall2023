@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
 public class CodeQuestMain {
     //Main Class that will start the game.
     public static File testRooms = new File("TestRooms.txt");
-`	public static file items = new File("Items.txt");
+	public static File items = new File("Items.txt");
 
     public static void main(String[] args) throws FileNotFoundException {
 
@@ -28,6 +28,7 @@ public class CodeQuestMain {
 
         //TEST SETUP
         game.populateRooms(testRooms);
+        game.populateItems(items);
         game.setFirstRoom();
 
         //Game Start
