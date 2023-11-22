@@ -12,6 +12,18 @@ as a coding master and graduate from this educational adventure with flying colo
 Commands/Controls:
 Type the following commands to perform its respective action
 
-help: Enter the help interface. Availible at any time in the game.
-quit: Exits the game entirely.
+GENERAL:
+help    Enter the help interface. Available at any time in the game.
+quit    Exits the game entirely.
+
+ROOM CONTROLS:
+-----------------------------------------------------------------------------------------------------------------------
+N       Move to the room in the north direction, if room exists.
+S       Move to the room in the south direction, if room exists.
+E       Move to the room in the east direction, if room exists.
+W       Move to the room in the west direction, if room exists.
+
+search [Room Name]      This command will give you a full description of a room as well as any monsters, items, or puzzles, if present.
+isVisitedRoom           This will inform you if you have visited a room or not.
+m-info                  If the room contains a monster, this will give you the monster's full description as well as HP and ATK.
 
