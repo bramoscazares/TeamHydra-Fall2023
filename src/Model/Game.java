@@ -269,6 +269,9 @@ public class Game {
         }
 
     } //Adds Puzzles into an ArrayList
+    public void hint(){
+
+    }
 
     public void mInfo() { // Mo: method for m-info command, returns Info
         Room Lcn = this.roomLinkedList.get(this.player.getRoomLocation());
