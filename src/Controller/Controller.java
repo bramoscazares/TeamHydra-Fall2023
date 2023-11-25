@@ -77,6 +77,14 @@ public class Controller {
             game.mInfo();
         } else if (input.equalsIgnoreCase("help")){  //Brian
             help(); //Brian
+        } else if (input.startsWith("pickup")){
+            game.pickupItem(item);
+        } else if (input.startsWith("drop")){
+            game.dropItem(item);
+        } else if (input.startsWith("use")){
+            game.useItem(item);
+        } else if (input.contains("open")){
+            game.openInventory();
         } else {
             display.printInvaldInput(); //Brian
         }

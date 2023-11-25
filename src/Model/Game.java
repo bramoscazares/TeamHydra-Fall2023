@@ -141,6 +141,49 @@ public class Game {
     	System.out.println("This item is not in your inventory.");
     }
 
+    public void openInventory() {
+        System.out.println("Inventory:");
+        if (player.playerInventory.isEmpty()) {
+            System.out.println("Empty");
+        } else {
+            for (Item item : player.playerInventory) {
+                System.out.println(item.getName());
+            }
+        }
+    }
+    public Item exploreItem(String itemName) {
+        for (Item item: player.playerInventory) {
+            if (item.getName().equalsIgnoreCase(itemName)) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public void useItem(String itemName) {
+        for(Item item : player.playerInventory) {
+            if (item.getName().equalsIgnoreCase(itemName)) {
+                if (item.type.equalsIgnoreCase("potion")) {
+                    player.playerInventory.remove(item);
+                    player.setHealthPoints(player.getHealthPoints() + item.getHealthPoints());
+                    System.out.println("\nYour health is " + player.getHealthPoints());
+                    return;
+                } else if (item.type.equalsIgnoreCase("Armor")) {
+                    player.playerInventory.remove(item);
+                    player.setAttackPoints(player.getHealthPoints() + item.getHealthPoints());
+                    System.out.println(item.getName() + " has been successfully equipped.");
+                    return;
+                } else if (item.type.equalsIgnoreCase("Weapon")) {
+                    player.playerInventory.remove(item);
+                    player.setAttackPoints(player.getAttackPoints() + item.getAttackPoints());
+                    System.out.println(item.getName() + " has been successfully equipped.");
+                    return;
+                }
+            }
+            System.out.println("This item is not in your inventory");
+        }
+    }
+
     public boolean move(char direction){ // By Mike
         switch(direction) {
             case 'n':
