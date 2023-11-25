@@ -118,7 +118,7 @@ public class Game {
         currentRoom = roomLinkedList.get(0);
     }
 
-    public void pickupItem (String itemName) {
+    public void pickupItem (String itemName) { //Juan: Entire Method
     	for (Item roomitem : currentRoom.getRoomItems()) {
     		if (roomitem.getName().equalsIgnoreCase(itemName)) {
     			player.getInventory().add(roomitem);
@@ -129,7 +129,37 @@ public class Game {
     	}
     }
 
-    public void dropItem (String itemName) {
+    public void fillrooms(){ //ENTIRE METHOD: BRIAN
+
+        //Goes through each room one by one
+        for(int i = 0; i < roomLinkedList.size(); i++){
+
+            //Populates Room i with any items that correlate
+            for(Item item: itemArrayList){
+                if(item.getRoomLocation() == roomLinkedList.get(i).getId()){
+                    roomLinkedList.get(i).getRoomItems().add(item);
+                }
+            }
+
+            //Populates Room i with any puzzles that correlate
+            for(Puzzle puzzle: puzzleArrayList){
+                if(puzzle.getRoomLocation() == roomLinkedList.get(i).getId()){
+                    roomLinkedList.get(i).setRoomPuzzle(puzzle);
+                }
+            }
+
+            //WHEN MOHAMMED ADDS MONSTERS I WILL ADD THIS
+//            //Populates Room i with any monsters that correlate
+//            for(Monster monster: monsterArrayList){
+//                if(monster.getRoomLocation() == roomLinkedList.get(i).getId()){
+//                    roomLinkedList.get(i).setMonster(monster);
+//                }
+//            }
+
+        }
+    } //Adds items and Puzzles into designated rooms by BRIAN
+
+    public void dropItem (String itemName) { //Juan: Entire Method
     	for(Item i: player.playerInventory) {
     		if (i.getName().equalsIgnoreCase(itemName)) {
     			currentRoom.getRoomItems().add(i);
@@ -141,7 +171,7 @@ public class Game {
     	System.out.println("This item is not in your inventory.");
     }
 
-    public void openInventory() {
+    public void openInventory() { //Juan: Entire Method
         System.out.println("Inventory:");
         if (player.playerInventory.isEmpty()) {
             System.out.println("Empty");
@@ -151,7 +181,7 @@ public class Game {
             }
         }
     }
-    public Item exploreItem(String itemName) {
+    public Item exploreItem(String itemName) { //Juan: Entire Method
         for (Item item: player.playerInventory) {
             if (item.getName().equalsIgnoreCase(itemName)) {
                 return item;
@@ -160,7 +190,7 @@ public class Game {
         return null;
     }
 
-    public void useItem(String itemName) {
+    public void useItem(String itemName) { //Juan: Entire Method
         for(Item item : player.playerInventory) {
             if (item.getName().equalsIgnoreCase(itemName)) {
                 if (item.type.equalsIgnoreCase("potion")) {
