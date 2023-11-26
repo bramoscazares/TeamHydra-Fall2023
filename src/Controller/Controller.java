@@ -72,9 +72,12 @@ public class Controller {
         } else if (wordyCommand[0].equalsIgnoreCase("search")){ // needed a user command thing that worked
             game.searchRoom(wordyCommand);
         } else if (input.equalsIgnoreCase("isVisitedRoom")) {
-            game.isVisitedRoom();
-        } else if (input.equalsIgnoreCase("m-info")){ // Mike: Stopped adding in front of this else
-            game.mInfo();
+            game.isVisitedRoom(); // Mike: Stopped adding in front of this else
+        } else if (input.equalsIgnoreCase("m-info")){ //else block by Mo
+            try {game.mInfo();}
+            catch (NullPointerException nullEx) {
+                display.noMonster();
+            } //end Mo's block
         } else if (input.equalsIgnoreCase("help")){  //Brian
             help(); //Brian
         } else if (input.startsWith("pick")){ //Juan
@@ -85,6 +88,11 @@ public class Controller {
             game.useItem(item); //Juan
         } else if (input.contains("open")){ //Juan
             game.openInventory(); //Juan
+        } else if (input.equalsIgnoreCase("attack")) { //Mo, this else block: woooOOOO LETS GET COMBAT AAAAAAAAAA it's 8 am i haven't slept in almsot 24 hours help me i have a multiple miles run in 3 hours
+            try {game.combat();}
+            catch (NullPointerException nullEx) {
+                display.noMonster();
+            }//end Mo's block
         } else {
             display.printInvaldInput(); //Brian
         }

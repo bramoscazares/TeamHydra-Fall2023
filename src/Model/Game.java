@@ -19,9 +19,9 @@ public class Game {
     private Player player = new Player("P1","Generic","This is a generic description.",1,100,100,false);  //Brian
 
     private Room currentRoom; //Brian
+    private Room prevRoom;
     private FileInputStream inputStream; //Brian
     private Scanner fileIn; //Brian
-
 
 
     public void populateRooms(File file) throws FileNotFoundException { //ENTIRE METHOD : BRIAN
@@ -200,12 +200,12 @@ public class Game {
                     return;
                 } else if (item.type.equalsIgnoreCase("Armor")) {
                     player.playerInventory.remove(item);
-                    player.setAttackPoints(player.getHealthPoints() + item.getHealthPoints());
+                    player.setHealthPoints(player.getHealthPoints() + item.getHealthPoints()); //Mo, minor correction, still need to add to equipment. Player needs maxHP field to differentiate between healing and armor
                     System.out.println(item.getName() + " has been successfully equipped.");
                     return;
                 } else if (item.type.equalsIgnoreCase("Weapon")) {
                     player.playerInventory.remove(item);
-                    player.setAttackPoints(player.getAttackPoints() + item.getAttackPoints());
+                    player.changeAttackPoints(item.getAttackPoints()); //Mo, minor correction, still need to add to equipment
                     System.out.println(item.getName() + " has been successfully equipped.");
                     return;
                 }
@@ -343,15 +343,56 @@ public class Game {
 
     } //Adds Puzzles into an ArrayList
 
-    public void mInfo() { // Mo: method for m-info command, returns Info
+    public void mInfo() { // Entirely Mo: method for m-info command, returns Info
         Room Lcn = this.currentRoom;
         Monster Mon = Lcn.getMonster();
-        if (Mon == null) System.out.println("There is no monster in this room.");
-        else {
-            System.out.println("Name: " + Mon.getName());
-            System.out.println(Mon.getDescription());
-            System.out.println("HP: " + Mon.getHealthPoints());
-            System.out.println("ATK: " + Mon.getAttackPoints());
-        }//end if else
+
+        //print Monster Details
+        System.out.println("Name: " + Mon.getName());
+        System.out.println(Mon.getDescription());
+        System.out.println("HP: " + Mon.getHealthPoints());
+        System.out.println("ATK: " + Mon.getAttackPoints());
+        //NEED TO PRINT MONSTER POWERS HERE AS WELL
+
     }//end mInfo(), Mohammed
-}
+
+    public void combat() {//Entire, Mo the bro
+        Scanner userInput = new Scanner(System.in); //userInput scanner
+        Monster mon = currentRoom.getMonster();
+
+        //Initialized true, set to false when Player/Monster dies or flee
+        boolean sickoMode = true;
+
+        //Mo: Player already typed "attack" once, initiating combat and dealing damage.
+        //Technically, first attack should also have effects/power chance
+        try {
+            mon.changeHealthPoints(player.attackPoints * -1);
+        } catch (RuntimeException HPZero) { //assuming the only Runtime Exception is the one we throw when HP = 0;
+
+        }
+
+        //the actual combat loop
+        while (!player.isDefeat() && !mon.isDefeat()) {
+            String attackOrFlee = userInput.nextLine();
+
+            if (attackOrFlee.equalsIgnoreCase("attack")) { //Player attacks
+                mon.changeHealthPoints(player.attackPoints * -1);
+            } else if (attackOrFlee.equalsIgnoreCase("run")) { //Player runs/flees to previous room.
+
+                //Moves Player's currentRoom to previous Room, adjusts "prevRoom" accordingly.
+                Room monRoom = currentRoom;
+                currentRoom = prevRoom;
+                prevRoom = monRoom;
+                break; //exits loop
+
+            }//end else attack/flee
+
+            if (!mon.isDefeat()) {//Mon survives? Then Mon attack
+                player.changeHealthPoints(mon.attackPoints * -1);
+            }
+
+        }//end loop while(sickoMode) combat loop
+
+    }//end combat(), entire by Mo (i'm such a legend, ik, yes need to thank me)
+
+}//end Class Game

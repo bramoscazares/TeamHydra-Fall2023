@@ -32,4 +32,8 @@ public class Display {
     public void printHelpReturn() {
         System.out.println("\nType 'return' to exit help.");
     }
+
+    public void noMonster() {//Entire, Mo
+        System.out.println("There is no monster in this room.");
+    }//end noMonster(), by Mo
 }
