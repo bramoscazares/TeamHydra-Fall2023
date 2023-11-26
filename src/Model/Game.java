@@ -208,7 +208,13 @@ public class Game {
                     player.setAttackPoints(player.getAttackPoints() + item.getAttackPoints());
                     System.out.println(item.getName() + " has been successfully equipped.");
                     return;
-                }
+                } else if (item.type.equalsIgnoreCase("Support")) {
+    				Puzzle currentPuzzle = currentRoom.getRoomPuzzle();
+    				if (item != null) {
+    					System.out.println("Hint : " + currentPuzzle.getHint());
+    					return;
+    				}
+    			}
             }
             System.out.println("This item is not in your inventory");
         }

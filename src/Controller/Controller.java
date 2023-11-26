@@ -85,6 +85,8 @@ public class Controller {
             game.useItem(item); //Juan
         } else if (input.contains("open")){ //Juan
             game.openInventory(); //Juan
+        } else if (input.startsWith("explore")){
+        	game.exploreItem(item);
         } else {
             display.printInvaldInput(); //Brian
         }
