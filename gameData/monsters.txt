@@ -1,0 +1,8 @@
+M1=Gatekeeper Gorgon=desc=20=4=3
+M2=Syntax Spiynx=desc=150=25=4
+M3=Looping Lizard=desc=70=15=5
+M4=Function Fiend=desc=30=10=6
+M5=Byte Behemoth=desc=20=5=9
+M6=Subdirectory Shakespeare=desc=400=45=11
+M7=4K Forgemaster=desc=150=35=14
+M8=Alt+F4=desc=25=11=16

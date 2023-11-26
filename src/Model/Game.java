@@ -102,12 +102,12 @@ public class Game {
             String[] tempArray = fileIn.nextLine().split("=");
 
             //Mo: assigns parts of file line to temp variables, then variables into Monster constructor
-            String monID = tempArray[0];
+            String monID   = tempArray[0];
             String monName = tempArray[1];
             String monDesc = tempArray[2];
-            int LcnRoomID = Integer.parseInt(tempArray[3]);
-            int MonHP = Integer.parseInt(tempArray[4]);
-            int MonATK = Integer.parseInt(tempArray[5]);
+            int MonHP      = Integer.parseInt(tempArray[3]);
+            int MonATK     = Integer.parseInt(tempArray[4]);
+            int LcnRoomID  = Integer.parseInt(tempArray[5]);
 
             this.roomLinkedList.get(LcnRoomID - 1).setMonster(new Monster(monID,monName,monDesc,LcnRoomID,MonHP,MonATK));
         }//end while
