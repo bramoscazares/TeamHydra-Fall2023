@@ -99,6 +99,14 @@ public class Controller {
         return string; //Brian
     }
 
+    public String splitCommand2(String string){ //Brian
+        String[] listString = string.split(" "); //Brian
+
+        if(listString.length>1){return listString[1]; } //Brian
+
+        return string; //Brian
+    }
+
     public void addGameFiles(File rooms, File items) {
     	gameFiles.add(rooms);
     	gameFiles.add(items);
