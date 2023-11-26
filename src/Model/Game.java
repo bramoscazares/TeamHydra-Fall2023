@@ -109,7 +109,7 @@ public class Game {
             int MonHP = Integer.parseInt(tempArray[4]);
             int MonATK = Integer.parseInt(tempArray[5]);
 
-            this.roomLinkedList.get(LcnRoomID).setMonster(new Monster(monID,monName,monDesc,LcnRoomID,MonHP,MonATK));
+            this.roomLinkedList.get(LcnRoomID - 1).setMonster(new Monster(monID,monName,monDesc,LcnRoomID,MonHP,MonATK));
         }//end while
 
     }//end populateMons(), by Mohammed
@@ -344,7 +344,7 @@ public class Game {
     } //Adds Puzzles into an ArrayList
 
     public void mInfo() { // Mo: method for m-info command, returns Info
-        Room Lcn = this.roomLinkedList.get(this.player.getRoomLocation());
+        Room Lcn = this.currentRoom;
         Monster Mon = Lcn.getMonster();
         if (Mon == null) System.out.println("There is no monster in this room.");
         else {
