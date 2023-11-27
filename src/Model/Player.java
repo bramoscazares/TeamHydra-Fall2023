@@ -21,5 +21,9 @@ public class Player extends Entity{
         this.equippedItem = equippedItem;
     }
     
+    @Override
+    public ArrayList<Item> getInventory() {
+        return playerInventory;
+    }
     
 }

@@ -182,12 +182,12 @@ public class Game {
         }
     }
     public Item exploreItem(String itemName) { //Juan: Entire Method
-        for (Item item: player.playerInventory) {
-            if (item.getName().equalsIgnoreCase(itemName)) {
-                return item;
-            }
-        }
-        return null;
+    	Item item = findItem(itemName);
+    	if (item != null) {
+    		System.out.println(item.getDescription());
+    	} else {
+    		System.out.println("Item is not in your inventory");
+    	}
     }
 
     public void useItem(String itemName) { //Juan: Entire Method

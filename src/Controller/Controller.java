@@ -94,7 +94,7 @@ public class Controller {
     }
 
     public String splitCommand(String string){ //Brian
-        String[] listString = string.split(" "); //Brian
+        String[] listString = string.split(" ", 2); //Brian
 
         if(listString.length>1){ return listString[1]; } //Brian
 
