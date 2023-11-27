@@ -55,6 +55,7 @@ public class Controller {
         input = input.toLowerCase();
         String item = splitCommand(input);
         String[] wordyCommand = longCommand(input);
+        String multiword = multiwordIn(input);
 
         if (input.equalsIgnoreCase("quit")){
             gameOver = true;
@@ -95,7 +96,7 @@ public class Controller {
         } else if (input.startsWith("solve")){ //Juan
                 game.solve(item); //Juan
         } else if (input.startsWith("explore")){ //Juan
-            if(item.equalsIgnoreCase("puzzle")){
+            if(item.equalsIgnoreCase("puzzle")){ //Mike: this needs to be set up to deal with explore puzzle versus explore "item name"
                 game.explore();
             }
         }  else if (input.contains("save")){ //Brian
@@ -132,6 +133,19 @@ public class Controller {
     public String[] longCommand(String input){ // From Mike
         String[] listString = input.split(" "); // From Brian above
         return listString;
+    }
+
+    public String multiwordIn(String input){ //Mike: I should have made this the first time but it's too late to go back and fix all the misuses
+        String[] listString = input.split(" ");
+        String secondpart = "";
+        int length = listString.length;
+        for (int i = 1; i < length; i++) {
+            secondpart = secondpart + listString[i];
+            if ((i+1)!=length){
+                secondpart = secondpart + " ";
+            }
+        }
+        return secondpart;
     }
 
     public void setupGame() throws FileNotFoundException {
