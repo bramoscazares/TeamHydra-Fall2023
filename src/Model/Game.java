@@ -108,14 +108,15 @@ public class Game {
             int LcnRoomID = Integer.parseInt(tempArray[3]);
             int MonHP = Integer.parseInt(tempArray[4]);
             int MonATK = Integer.parseInt(tempArray[5]);
+            boolean MonDefeat = Boolean.parseBoolean(tempArray[6]);// Brian
 
-            this.roomLinkedList.get(LcnRoomID).setMonster(new Monster(monID,monName,monDesc,LcnRoomID,MonHP,MonATK));
+            this.roomLinkedList.get(LcnRoomID).setMonster(new Monster(monID,monName,monDesc,LcnRoomID,MonHP,MonATK,MonDefeat)); //Brian
         }//end while
 
     }//end populateMons(), by Mohammed
 
-    public void setFirstRoom(){
-        currentRoom = roomLinkedList.get(0);
+    public void setFirstRoom(){ //brian
+        currentRoom = roomLinkedList.get(0); //brian
     }
 
     public void pickupItem (String itemName) { //Juan: Entire Method
