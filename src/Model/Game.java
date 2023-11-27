@@ -373,11 +373,22 @@ public class Game  implements Serializable {
             System.out.println("puzzle description: " + currentRoom.getRoomPuzzle().getDescription());
         }
     }
-    public void solve(){ //Xavier bulk some additions by mike
+    public void solve(String solution){ //Xavier bulk some additions by mike
         if (currentRoom.getRoomPuzzle() == null) System.out.println("There are no puzzles in this room.");
-        else {
+        else if (solution == currentRoom.getRoomPuzzle().getAnswer())
+        {
+            System.out.println("Your answer ís correct");
+            currentRoom.getRoomPuzzle().setSolved(true);
+        } else {
+            System.out.println("Your answer is incorrect. Try again");
+            for (Item item : player.playerInventory) {
+                if (item.getObjectId() == "A2"){
+                    System.out.println("You can use the support item to get the hint");
+                }
+            }
+        }
+    }
 
-    }}
     public void mInfo() { // Mo: method for m-info command, returns Info
         Room Lcn = this.roomLinkedList.get(this.player.getRoomLocation());
         Monster Mon = Lcn.getMonster();

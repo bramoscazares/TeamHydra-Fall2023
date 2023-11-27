@@ -93,7 +93,7 @@ public class Controller {
         } else if (input.startsWith("hint")){ //Juan
                 game.hint(); //Juan
         } else if (input.startsWith("solve")){ //Juan
-                game.solve(); //Juan
+                game.solve(item); //Juan
         } else if (input.startsWith("explore")){ //Juan
                 game.explore();
         }  else if (input.contains("save")){ //Brian
