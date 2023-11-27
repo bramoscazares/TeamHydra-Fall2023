@@ -3,11 +3,12 @@ package Model;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class Game {
+public class Game  implements Serializable {
 
     private LinkedList<Room> roomLinkedList = new LinkedList<>();  //Brian
     private ArrayList<Puzzle> puzzleArrayList = new ArrayList<>();
@@ -19,8 +20,8 @@ public class Game {
     private Player player = new Player("P1","Generic","This is a generic description.",1,100,100,false);  //Brian
 
     private Room currentRoom; //Brian
-    private FileInputStream inputStream; //Brian
-    private Scanner fileIn; //Brian
+    private transient FileInputStream inputStream; //Brian
+    private transient Scanner fileIn; //Brian
 
 
 
@@ -108,14 +109,15 @@ public class Game {
             int LcnRoomID = Integer.parseInt(tempArray[3]);
             int MonHP = Integer.parseInt(tempArray[4]);
             int MonATK = Integer.parseInt(tempArray[5]);
+            boolean MonDefeat = Boolean.parseBoolean(tempArray[6]);// Brian
 
-            this.roomLinkedList.get(LcnRoomID).setMonster(new Monster(monID,monName,monDesc,LcnRoomID,MonHP,MonATK));
+            this.roomLinkedList.get(LcnRoomID).setMonster(new Monster(monID,monName,monDesc,LcnRoomID,MonHP,MonATK,MonDefeat)); //Brian
         }//end while
 
     }//end populateMons(), by Mohammed
 
-    public void setFirstRoom(){
-        currentRoom = roomLinkedList.get(0);
+    public void setFirstRoom(){ //brian
+        currentRoom = roomLinkedList.get(0); //brian
     }
 
     public void pickupItem (String itemName) { //Juan: Entire Method

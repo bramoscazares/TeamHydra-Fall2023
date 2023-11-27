@@ -1,6 +1,8 @@
 package Model;
 
-public class GameObject {
+import java.io.Serializable;
+
+public class GameObject implements Serializable {
 
     private String objectId;
     private String name;

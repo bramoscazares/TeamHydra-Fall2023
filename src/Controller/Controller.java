@@ -4,8 +4,7 @@ import Model.Game;
 import View.Display;
 
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -19,7 +18,12 @@ public class Controller {
     private ArrayList<File> gameFiles = new ArrayList<>();  //Brian
     private HashMap<String,File> gameFilesAlt = new HashMap<>();  //Brian
 
+
+    private String saveFile;
+
     private boolean gameOver = false;
+
+    private boolean Continue = false;
 
     public Controller(Game game, Display display){
         this.game = game;
@@ -29,8 +33,9 @@ public class Controller {
     }
 
     public void startGame() throws FileNotFoundException{
+        gameLoad(); //Brian
+        display.printSeperator(); //Brian
         while (!gameOver) {
-
             //Prints room description
             //display.displayRoomInfo(game.getCurrentRoom());
             game.printRoomName(); // Mike: pulling room name from game through controller to pass to display was too much hassle
@@ -91,6 +96,10 @@ public class Controller {
                 game.solve(); //Juan
         } else if (input.startsWith("explore")){ //Juan
                 game.explore();
+        }  else if (input.contains("save")){ //Brian
+            saveGame(); //Brian
+        }  else if (input.contains("load")){ //Brian
+            loadGame(); //Brian
         } else {
             display.printInvaldInput(); //Brian
         }
@@ -142,6 +151,80 @@ public class Controller {
               display.printInvaldInput();  //Brian
             }
             userInput = input.nextLine();  //Brian
+        }
+    }
+
+
+
+    private void saveGame(){
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(this.saveFile))) {
+            oos.writeObject(game);
+            Display.gameSaveSuccess();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("\nGame save failed.");
+        }
+    }
+
+    private void loadGame(){
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(this.saveFile))) {
+            game = (Game) ois.readObject();
+            Display.gameLoadSuccess();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("\nGame load failed.");
+        }
+
+    }
+
+    private void gameLoad() { //ENTIRE METHOD: Brian
+
+        File saveFiles = new File("SaveFiles");
+        String[] saves = saveFiles.list();
+        while (true) {
+
+            display.newOrLoadGame(); //brian
+            String userInput = input.nextLine(); //brian
+
+            if (userInput.equalsIgnoreCase("new player")) {
+                display.newUserName();
+
+                while (true) {
+                    String userName = input.nextLine(); //brian
+                    String userNameFile = userName + ".dat";
+                    File save = new File(saveFiles, userNameFile);
+                    if (save.exists() || (userName.length() >= 15)) {
+                        display.displayInvalidUsername();
+                    } else {
+                        this.saveFile = "SaveFiles/"+userNameFile;
+                        return;
+                    }
+                }
+
+            } else if (userInput.equalsIgnoreCase("load player")) {
+                if (saves != null && saves.length == 0) {
+                   display.noSavesExists();
+                } else {
+                    display.printSaveFiles(saves);
+                    display.loadUserName();
+                    String userName = input.nextLine(); //brian
+                    String saveString = userName + ".dat";
+                    File save = new File(saveFiles, saveString);
+
+                    if (save.exists()) {
+                        this.saveFile = "SaveFiles/"+saveString;
+                        loadGame();
+                        return;
+                    } else {
+                        display.displayInvalidUsername();
+                    }
+                }
+            } else if (userInput.equalsIgnoreCase("help")){
+                display.printHelp(game.gameHelpArrayList);
+            } else {
+                display.printInvaldInput();
+            }
         }
     }
 
