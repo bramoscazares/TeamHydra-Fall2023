@@ -200,7 +200,7 @@ public class Game {
                     return;
                 } else if (item.type.equalsIgnoreCase("Armor")) {
                     player.playerInventory.remove(item);
-                    player.setHealthPoints(player.getHealthPoints() + item.getHealthPoints()); //Mo, minor correction, still need to add to equipment. Player needs maxHP field to differentiate between healing and armor
+                    player.setHealthPoints(player.getHealthPoints() + item.getHealthPoints());
                     System.out.println(item.getName() + " has been successfully equipped.");
                     return;
                 } else if (item.type.equalsIgnoreCase("Weapon")) {
@@ -356,27 +356,20 @@ public class Game {
 
     }//end mInfo(), Mohammed
 
-    public void combat() {//Entire, Mo the bro
+    public boolean combat() {//Entire, Mo the bro. True when Player dies
         Scanner userInput = new Scanner(System.in); //userInput scanner
         Monster mon = currentRoom.getMonster();
+        boolean sickoMode = true; //set false when Player/Monster dies or flee
 
-        //Initialized true, set to false when Player/Monster dies or flee
-        boolean sickoMode = true;
-
-        //Mo: Player already typed "attack" once, initiating combat and dealing damage.
+        //Mo: By now, Player already typed "attack" once, initiating combat and dealing damage.
         //Technically, first attack should also have effects/power chance
-        try {
-            mon.changeHealthPoints(player.attackPoints * -1);
-        } catch (RuntimeException HPZero) { //assuming the only Runtime Exception is the one we throw when HP = 0;
-
-        }
-
+       mon.defeat = mon.takeDamage(player.attackPoints);
         //the actual combat loop
         while (!player.isDefeat() && !mon.isDefeat()) {
             String attackOrFlee = userInput.nextLine();
 
             if (attackOrFlee.equalsIgnoreCase("attack")) { //Player attacks
-                mon.changeHealthPoints(player.attackPoints * -1);
+                mon.defeat = mon.takeDamage(player.attackPoints);
             } else if (attackOrFlee.equalsIgnoreCase("run")) { //Player runs/flees to previous room.
 
                 //Moves Player's currentRoom to previous Room, adjusts "prevRoom" accordingly.
@@ -384,15 +377,18 @@ public class Game {
                 currentRoom = prevRoom;
                 prevRoom = monRoom;
                 break; //exits loop
-
             }//end else attack/flee
 
-            if (!mon.isDefeat()) {//Mon survives? Then Mon attack
-                player.changeHealthPoints(mon.attackPoints * -1);
+            if (!mon.defeat) {//Mon survives? Then Mon attack
+                player.takeDamage(mon.attackPoints);
             }
 
         }//end loop while(sickoMode) combat loop
 
+        return player.defeat;
     }//end combat(), entire by Mo (i'm such a legend, ik, yes need to thank me)
+
+
+
 
 }//end Class Game

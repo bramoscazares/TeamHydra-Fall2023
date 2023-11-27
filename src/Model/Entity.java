@@ -22,24 +22,21 @@ public class Entity extends GameObject{
         return healthPoints;
     }
 
-    public void setHealthPoints(int healthPoints) {
+    public boolean setHealthPoints(int healthPoints) {
         this.healthPoints = healthPoints;
-    }
 
+        //end if{}, Mo
+        if (this.healthPoints <= 0) this.defeat = true; //Mo
+        return defeat;
+    }//end setHealthPoints()
 
-    public void changeHealthPoints(int HPChange) {//entire, Mo
-        this.healthPoints += HPChange;
-
-        //Mo, throw an exception. Controller catches and calls View. Also updates Entity boolean "defeat"
-        if (this.healthPoints < 0) {
-            this.defeat = true; //Mo: idk if we'll ever use this field, but, just in case, might as well.
-            throw new RuntimeException(this.getClass().getName() + " Entity " + this.getName() + " healthPoints = 0. Not necessarily an issue");
-        }
-
-    }//end changeHealthPoints() by Mo
 
     public int getAttackPoints() {
         return attackPoints;
+    }
+
+    public void setAttackPoints(int attackPoints) {
+        this.attackPoints = attackPoints;
     }
 
     public void changeAttackPoints(int ATKChange) {//Entire, Mo.
@@ -61,4 +58,16 @@ public class Entity extends GameObject{
     public ArrayList<Item> getInventory() {
         return inventory;
     }
+
+
+    public boolean takeDamage(int HPdmg) {//entire, Mo: True when HP<=0
+        this.healthPoints -= HPdmg;
+
+        if (this.healthPoints <= 0) this.defeat = true;
+        return this.defeat;
+    }//end changeHealthPoints() by Mo
+
+    public boolean attackKill(Entity target) {//Entire, Mo: True when target.isDefeat()
+        target.takeDamage(this.attackPoints);
+    }//
 }
