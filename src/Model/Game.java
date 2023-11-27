@@ -51,6 +51,20 @@ public class Game  implements Serializable {
             this.roomLinkedList.add(new Room(roomNum,roomName,roomDescription,roomVisited,roomNorth,roomEast,roomSouth,roomWest, portalRoom));
         }
 
+        inputStream = new FileInputStream("gameData/portal checklist.txt"); //Mike adding a bit to put in what rooms to check for completion to access portals
+        fileIn = new Scanner(inputStream);
+        while(fileIn.hasNext()){
+            String[] tempArray = fileIn.nextLine().split("=");
+            int portalRoom = Integer.parseInt(tempArray[0]);
+            String[] checkRooms = tempArray[1].split(",");
+            int[] roomsCheck = new int[checkRooms.length];
+            for (int i = 0; i < checkRooms.length; i++) {
+                roomsCheck[i]= Integer.parseInt(checkRooms[i]);
+            }
+
+            roomLinkedList.get(portalRoom-1).setPortalCheck(roomsCheck);
+        }
+
     }
 
     public void populateItems(File file) throws FileNotFoundException {
