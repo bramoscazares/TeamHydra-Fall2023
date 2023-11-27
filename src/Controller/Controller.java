@@ -95,7 +95,9 @@ public class Controller {
         } else if (input.startsWith("solve")){ //Juan
                 game.solve(item); //Juan
         } else if (input.startsWith("explore")){ //Juan
+            if(item.equalsIgnoreCase("puzzle")){
                 game.explore();
+            }
         }  else if (input.contains("save")){ //Brian
             saveGame(); //Brian
         }  else if (input.contains("load")){ //Brian

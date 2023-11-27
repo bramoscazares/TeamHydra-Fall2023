@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9777b3ce-d905-4aad-86a4-23e63dfb36be" name="Changes" comment="Mike: added calls to  populatepuzzles and puzzle file stuff to the codequest main">
+    <list default="true" id="9777b3ce-d905-4aad-86a4-23e63dfb36be" name="Changes" comment="Mike: fixed puzzles.txt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gameData/puzzles.txt" beforeDir="false" afterPath="$PROJECT_DIR$/gameData/puzzles.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/CodeQuestMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/CodeQuestMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/Controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/Controller/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/Model/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/Model/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/Model/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/Model/Room.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/View/Display.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/View/Display.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +107,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701120067397</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Mike: fixed puzzles.txt">
+      <option name="closed" value="true" />
+      <created>1701121072318</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1701121072318</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -123,6 +135,7 @@
     <MESSAGE value="Mike: hint request now tells you that you need the puzzle book if you don't have it" />
     <MESSAGE value="Mike: hint request now tells you that you need the puzzle book if you don't have it, puzzle solve checks answer for correctness and tells incorrect players that they can use their book for a hint if they have it" />
     <MESSAGE value="Mike: added calls to  populatepuzzles and puzzle file stuff to the codequest main" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mike: added calls to  populatepuzzles and puzzle file stuff to the codequest main" />
+    <MESSAGE value="Mike: fixed puzzles.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mike: fixed puzzles.txt" />
   </component>
 </project>
