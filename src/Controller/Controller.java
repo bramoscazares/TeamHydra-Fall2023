@@ -77,12 +77,20 @@ public class Controller {
             game.mInfo();
         } else if (input.equalsIgnoreCase("help")){  //Brian
             help(); //Brian
-        } else if (input.equalsIgnoreCase("explore puzzle")) {  //Brian
-            game.explorePuzzle;
-        } else if (input.equalsIgnoreCase("hint")) {  //Brian
-                game.hint;
-        } else if (input.equalsIgnoreCase("solve")) {  //Brian
-            game.solve;
+        } else if (input.startsWith("pick")){ //Juan
+            game.pickupItem(item); //Juan
+        } else if (input.startsWith("drop")){ //Juan
+            game.dropItem(item); //Juan
+        } else if (input.startsWith("use")){ //Juan
+            game.useItem(item); //Juan
+        } else if (input.contains("open")) { //juan
+            game.openInventory(); //Juan
+        } else if (input.startsWith("hint")){ //Juan
+                game.hint(); //Juan
+        } else if (input.startsWith("solve")){ //Juan
+                game.solve(); //Juan
+        } else if (input.startsWith("explore")){ //Juan
+                game.explore();
         } else {
             display.printInvaldInput(); //Brian
         }
