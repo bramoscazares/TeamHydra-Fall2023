@@ -1,11 +1,12 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /* By group agreement and assessment of prexisting code we have all agreed to use Brian's clean and easy to read code for the basis of the group assignment
 * The following code is in large part property of Brian Ramos Cazares, with adjustments made by Michael Hopkins
 */
-public class Room {
+public class Room implements Serializable {
 
     private int id;
 

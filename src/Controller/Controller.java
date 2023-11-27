@@ -4,8 +4,7 @@ import Model.Game;
 import View.Display;
 
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -85,6 +84,10 @@ public class Controller {
             game.useItem(item); //Juan
         } else if (input.contains("open")){ //Juan
             game.openInventory(); //Juan
+        }  else if (input.contains("save")){ //Brian
+            saveGame(); //Brian
+        }  else if (input.contains("load")){ //Brian
+            loadGame(); //Brian
         } else {
             display.printInvaldInput(); //Brian
         }
@@ -137,6 +140,30 @@ public class Controller {
             }
             userInput = input.nextLine();  //Brian
         }
+    }
+
+
+
+    private void saveGame(){
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("test.dat"))) {
+            oos.writeObject(game);
+            Display.gameSaveSuccess();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("\nGame save failed.");
+        }
+    }
+
+    private void loadGame(){
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("test.dat"))) {
+            game = (Game) ois.readObject();
+            Display.gameLoadSuccess();
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("\nGame load failed.");
+        }
+
     }
 
 

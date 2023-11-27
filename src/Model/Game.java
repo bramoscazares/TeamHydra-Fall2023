@@ -3,11 +3,12 @@ package Model;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class Game {
+public class Game  implements Serializable {
 
     private LinkedList<Room> roomLinkedList = new LinkedList<>();  //Brian
     private ArrayList<Puzzle> puzzleArrayList = new ArrayList<>();
@@ -19,8 +20,8 @@ public class Game {
     private Player player = new Player("P1","Generic","This is a generic description.",1,100,100,false);  //Brian
 
     private Room currentRoom; //Brian
-    private FileInputStream inputStream; //Brian
-    private Scanner fileIn; //Brian
+    private transient FileInputStream inputStream; //Brian
+    private transient Scanner fileIn; //Brian
 
 
 

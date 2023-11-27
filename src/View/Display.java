@@ -5,6 +5,15 @@ import java.util.ArrayList;
 public class Display {
 
 
+    public static void gameSaveSuccess() {
+        System.out.println("Game saved successfully.");
+    }
+
+    public static void gameLoadSuccess() {
+        System.out.println("Game loaded successfully.");
+
+    }
+
     public void printSeperator(){ // Method: Brian
         System.out.println("\n--------------------------------------------------------------------------------------------------------------");
     }
