@@ -83,8 +83,14 @@ public class Controller {
             game.dropItem(item); //Juan
         } else if (input.startsWith("use")){ //Juan
             game.useItem(item); //Juan
-        } else if (input.contains("open")){ //Juan
+        } else if (input.contains("open")) { //juan
             game.openInventory(); //Juan
+        } else if (input.startsWith("hint")){ //Juan
+                game.hint(); //Juan
+        } else if (input.startsWith("solve")){ //Juan
+                game.solve(); //Juan
+        } else if (input.startsWith("explore")){ //Juan
+                game.explore();
         } else {
             display.printInvaldInput(); //Brian
         }

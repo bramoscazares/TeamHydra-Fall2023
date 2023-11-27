@@ -342,7 +342,31 @@ public class Game {
         }
 
     } //Adds Puzzles into an ArrayList
+    public void hint(){
+        Room Lcn = this.roomLinkedList.get(this.player.getRoomLocation());
+        Puzzle puz = Lcn.getRoomPuzzle();
+        if (puz == null) System.out.println("There is not a puzzle in this room.");
+        else
+        {
+            System.out.println("the hint for this puzzle is: " + puz.getHint());
+        }
+    }
+    public void explore(){
+        Room Lcn = this.roomLinkedList.get(this.player.getRoomLocation());
+        Puzzle puz = Lcn.getRoomPuzzle();
+        if (puz == null) System.out.println("There is not a puzzle in this room.");
+        else
+        {
+            System.out.println("puzzle description: " + puz.getDescription());
+        }
+    }
+    public void solve(){
+        Room Lcn = this.roomLinkedList.get(this.player.getRoomLocation());
+        Puzzle puz = Lcn.getRoomPuzzle();
+        if (puz == null) System.out.println("There is not a puzzle in this room.");
+        else {
 
+    }}
     public void mInfo() { // Mo: method for m-info command, returns Info
         Room Lcn = this.roomLinkedList.get(this.player.getRoomLocation());
         Monster Mon = Lcn.getMonster();
