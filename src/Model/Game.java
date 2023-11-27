@@ -249,7 +249,7 @@ public class Game  implements Serializable {
     }
 
     public boolean usePortal(){
-
+        return true;
     }
 
     public void printRoomName(){ // Mike: better than a block of code in game controller and display to do the same thing
@@ -349,28 +349,26 @@ public class Game  implements Serializable {
         }
 
     } //Adds Puzzles into an ArrayList
-    public void hint(){
-        Room Lcn = this.roomLinkedList.get(this.player.getRoomLocation());
-        Puzzle puz = Lcn.getRoomPuzzle();
-        if (puz == null) System.out.println("There is not a puzzle in this room.");
+    public void hint(){ //Xavier bulk some additions by mike
+        if (currentRoom.getRoomPuzzle() == null) System.out.println("There are no puzzles in this room.");
         else
         {
-            System.out.println("the hint for this puzzle is: " + puz.getHint());
+            for (Item item : player.playerInventory) {
+                if (item.getObjectId() == "A2"){
+                    System.out.println("the hint for this puzzle is: " + currentRoom.getRoomPuzzle().getHint());
+                }
+            }
         }
     }
-    public void explore(){
-        Room Lcn = this.roomLinkedList.get(this.player.getRoomLocation());
-        Puzzle puz = Lcn.getRoomPuzzle();
-        if (puz == null) System.out.println("There is not a puzzle in this room.");
+    public void explore(){//Xavier bulk some additions by mike
+        if (currentRoom.getRoomPuzzle() == null) System.out.println("There are no puzzles in this room.");
         else
         {
-            System.out.println("puzzle description: " + puz.getDescription());
+            System.out.println("puzzle description: " + currentRoom.getRoomPuzzle().getDescription());
         }
     }
-    public void solve(){
-        Room Lcn = this.roomLinkedList.get(this.player.getRoomLocation());
-        Puzzle puz = Lcn.getRoomPuzzle();
-        if (puz == null) System.out.println("There is not a puzzle in this room.");
+    public void solve(){ //Xavier bulk some additions by mike
+        if (currentRoom.getRoomPuzzle() == null) System.out.println("There are no puzzles in this room.");
         else {
 
     }}

@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9777b3ce-d905-4aad-86a4-23e63dfb36be" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gameData/rooms.txt" beforeDir="false" afterPath="$PROJECT_DIR$/gameData/rooms.txt" afterDir="false" />
+    <list default="true" id="9777b3ce-d905-4aad-86a4-23e63dfb36be" name="Changes" comment="Mike: Added portal var to rooms and rooms.txt, created usePortal class but it does nothing yet">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Room.java" afterDir="false" />
     </list>
@@ -16,6 +15,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -60,6 +64,15 @@
       <option name="presentableId" value="Default" />
       <updated>1700594027832</updated>
     </task>
+    <task id="LOCAL-00001" summary="Mike: Added portal var to rooms and rooms.txt, created usePortal class but it does nothing yet">
+      <option name="closed" value="true" />
+      <created>1701114713424</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1701114713424</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -72,5 +85,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Mike: Added portal var to rooms and rooms.txt, created usePortal class but it does nothing yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mike: Added portal var to rooms and rooms.txt, created usePortal class but it does nothing yet" />
   </component>
 </project>

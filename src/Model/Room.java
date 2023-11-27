@@ -105,6 +105,14 @@ public class Room implements Serializable {
     public void setMonster(Monster monster) {
         this.monster = monster;}
 
+    public int getPortal() {
+        return portal;
+    }
+
+    public void setPortal(int portal) {
+        this.portal = portal;
+    }
+
     // toString override
     @Override
     public String toString(){return id + " " + name;}
