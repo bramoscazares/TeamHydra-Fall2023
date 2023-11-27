@@ -176,18 +176,18 @@ public class Controller {
         String[] saves = saveFiles.list();
         while (true) {
 
-            //display.newOrLoadGame(); //brian
+            display.newOrLoadGame(); //brian
             String userInput = input.nextLine(); //brian
 
             if (userInput.equalsIgnoreCase("new player")) {
-                //display.newUserName();
+                display.newUserName();
 
                 while (true) {
                     String userName = input.nextLine(); //brian
                     this.saveFile = userName + ".dat";
                     File save = new File(saveFiles, this.saveFile);
                     if (save.exists() || (userName.length() >= 15)) {
-                        //display.displayInvalidUsername();
+                        display.displayInvalidUsername();
                     } else {
                         return;
                     }
@@ -195,20 +195,23 @@ public class Controller {
 
             } else if (userInput.equalsIgnoreCase("load player")) {
                 if (saves != null && saves.length == 0) {
-                   //display.noSavesExists();
+                   display.noSavesExists();
                 } else {
-                    //display.loadUserName();
+                    display.loadUserName();
                     String userName = input.nextLine(); //brian
                     String saveString = userName + ".dat";
                     File save = new File(saveFiles, saveString);
+
                     if (save.exists()) {
                         this.saveFile = saveString;
                         loadGame();
                         return;
                     } else {
-                        //display.displayInvalidUsername();
+                        display.displayInvalidUsername();
                     }
                 }
+            } else if (userInput.equalsIgnoreCase("help")){
+                display.printHelp(game.gameHelpArrayList);
             } else {
                 display.printInvaldInput();
             }

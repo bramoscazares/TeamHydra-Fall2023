@@ -41,4 +41,30 @@ public class Display {
     public void printHelpReturn() {
         System.out.println("\nType 'return' to exit help.");
     }
+
+    public void newOrLoadGame() {
+        System.out.println("Are you a new player or returning?");
+        System.out.println("Enter 'new player' to start a new game.");
+        System.out.println("Enter 'load player' to load a save file.\n");
+        System.out.println("Enter 'help' for more options.");
+    }
+
+    public void newUserName() {
+        System.out.print("Please enter a new username");
+        System.out.println();
+    }
+
+    public void displayInvalidUsername() {
+        System.out.println("This is an invalid Username. Try again.");
+    }
+
+    public void noSavesExists() {
+        System.out.println("There are currently no save files to load.");
+        System.out.println("Please start a new game.");
+    }
+
+    public void loadUserName() {
+        System.out.print("Enter a username to load a game:");
+        System.out.println();
+    }
 }
