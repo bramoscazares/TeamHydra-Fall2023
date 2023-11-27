@@ -350,16 +350,22 @@ public class Game  implements Serializable {
 
     } //Adds Puzzles into an ArrayList
     public void hint(){ //Xavier bulk some additions by mike
+        boolean bookFound = false;
         if (currentRoom.getRoomPuzzle() == null) System.out.println("There are no puzzles in this room.");
         else
         {
             for (Item item : player.playerInventory) {
                 if (item.getObjectId() == "A2"){
                     System.out.println("the hint for this puzzle is: " + currentRoom.getRoomPuzzle().getHint());
+                    bookFound = true;
                 }
+            }
+            if (bookFound == false){
+                System.out.println("You need the ”Enchanted Puzzle Book” to get the puzzle hint");
             }
         }
     }
+
     public void explore(){//Xavier bulk some additions by mike
         if (currentRoom.getRoomPuzzle() == null) System.out.println("There are no puzzles in this room.");
         else
