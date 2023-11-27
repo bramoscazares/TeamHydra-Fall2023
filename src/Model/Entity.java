@@ -67,7 +67,7 @@ public class Entity extends GameObject{
         return this.defeat;
     }//end changeHealthPoints() by Mo
 
-    public boolean attackKill(Entity target) {//Entire, Mo: True when target.isDefeat()
-        target.takeDamage(this.attackPoints);
-    }//
+    public boolean attackIsKilled(Entity target) {//Entire, Mo: True when target.isDefeat().
+        return target.takeDamage(this.attackPoints);
+    }//end attackKill() by Mo
 }

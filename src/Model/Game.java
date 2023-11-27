@@ -16,7 +16,7 @@ public class Game {
 
     private ArrayList<Item> itemArrayList = new ArrayList<>();
 
-    private Player player = new Player("P1","Generic","This is a generic description.",1,100,100,false);  //Brian
+    private Player player = new Player("P1","Generic","This is a generic description.",1,100,10,false);  //Brian
 
     private Room currentRoom; //Brian
     private Room prevRoom;
@@ -356,38 +356,32 @@ public class Game {
 
     }//end mInfo(), Mohammed
 
-    public boolean combat() {//Entire, Mo the bro. True when Player dies
-        Scanner userInput = new Scanner(System.in); //userInput scanner
+    public boolean attackSequence() throws monDeathEvent {//Entire, Mo the bro: True when player.isDefeat()
         Monster mon = currentRoom.getMonster();
-        boolean sickoMode = true; //set false when Player/Monster dies or flee
 
-        //Mo: By now, Player already typed "attack" once, initiating combat and dealing damage.
-        //Technically, first attack should also have effects/power chance
-       mon.defeat = mon.takeDamage(player.attackPoints);
-        //the actual combat loop
-        while (!player.isDefeat() && !mon.isDefeat()) {
-            String attackOrFlee = userInput.nextLine();
+        //Plyr attacks Mon. If Mon survives, then it counterattacks,
+        // otherwise, remove Mon from room & throw to notify Game>combatInterface() of Mon defeat
+        player.attackIsKilled(mon);
 
-            if (attackOrFlee.equalsIgnoreCase("attack")) { //Player attacks
-                mon.defeat = mon.takeDamage(player.attackPoints);
-            } else if (attackOrFlee.equalsIgnoreCase("run")) { //Player runs/flees to previous room.
-
-                //Moves Player's currentRoom to previous Room, adjusts "prevRoom" accordingly.
-                Room monRoom = currentRoom;
-                currentRoom = prevRoom;
-                prevRoom = monRoom;
-                break; //exits loop
-            }//end else attack/flee
-
-            if (!mon.defeat) {//Mon survives? Then Mon attack
-                player.takeDamage(mon.attackPoints);
-            }
-
-        }//end loop while(sickoMode) combat loop
+        if (mon.defeat) {
+            currentRoom.setMonster(null); //removes mon from room
+            throw new monDeathEvent(mon.getName());
+        }
+        else mon.attackIsKilled(player);
 
         return player.defeat;
-    }//end combat(), entire by Mo (i'm such a legend, ik, yes need to thank me)
 
+    }//end attackSequence(), entire by Mo (i'm such a legend, ik, yes need to thank me)
+
+    public void runAway() {//Entire, Mo: Plyr moves to prevRoom, updates prevRoom
+        Room monRoom = currentRoom;
+        currentRoom = prevRoom;
+        prevRoom = monRoom;
+    }//end runAway() by Mo
+
+    public String getRoomMonsterName() {//Entire, Mo: we REALLY need access to Monster name from Controller
+        return currentRoom.getMonster().getName();
+    }
 
 
 

@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.Game;
+import Model.*;
 import View.Display;
 
 
@@ -88,11 +88,10 @@ public class Controller {
             game.useItem(item); //Juan
         } else if (input.contains("open")){ //Juan
             game.openInventory(); //Juan
-        } else if (input.equalsIgnoreCase("attack")) { //Mo, this else block: woooOOOO LETS GET COMBAT AAAAAAAAAA it's 8 am i haven't slept in almsot 24 hours help me i have a multiple miles run in 3 hours
-            try {game.combat();}
-            catch (NullPointerException nullEx) {
-                display.noMonster();
-            }//end Mo's block
+        } else if (input.equalsIgnoreCase("attack")) { //Mo, this entire else block and try/catch chain
+            try {combatInterface();} //Mo: True if player dies in combat()
+            catch (NullPointerException nullMonster) {display.noMonster();} //Mo: careful, catches *any* nullExpn, not just Mons
+           //end Mo's Block
         } else {
             display.printInvaldInput(); //Brian
         }
@@ -138,6 +137,55 @@ public class Controller {
             userInput = input.nextLine();  //Brian
         }
     }
+
+
+    public boolean combatInterface() {//Entire, Mo the bro. True when Player dies
+        //Player already typed attack at this point. boolean initial lets us skip first input Query
+        String userInput = "attack";
+        boolean initial = true;
+        boolean sickoMode = true;
+        String monName = game.getRoomMonsterName();
+
+
+        while (sickoMode) {
+            if (initial) initial = false; //skips first userInput
+            else {
+                display.combatQuery();
+                userInput = input.nextLine().toLowerCase();
+            }
+
+            switch (userInput) {
+                case "attack":
+                    try {
+                        if (game.attackSequence()) {
+                            display.playerDeath(monName);
+                            return true;
+                        }
+                        display.combatStatus(2, 3);
+                    } catch (monDeathEvent fatality) {
+                        display.monDeath(monName);
+                        sickoMode = false;
+                    }
+
+                    //Technically, there is no print msg upon attack, only a "status" display msg after each sequence showing stats of both.
+//                    display.playerAttack();
+//                    display.monAttack();
+                    break;
+
+                case "run":
+                    game.runAway();
+                    display.runAway(monName);
+                    sickoMode = false;
+                    break;
+
+                default:
+                    display.printInvaldInput();
+                    break;
+            }//end switch(userInput)
+        }//end loop while()
+
+        return false;
+    }//end combat(), entire by Mo (i'm such a legend, ik, yes need to thank me)
 
 
 
