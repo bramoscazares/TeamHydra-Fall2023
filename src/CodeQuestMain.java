@@ -15,6 +15,7 @@ public class CodeQuestMain {
 
 	public static File items = new File("gameData/Items.txt");
 
+    public static File puzzles = new File("gameData/puzzles.txt");
 
     public static void main(String[] args) throws FileNotFoundException {
 
@@ -31,6 +32,7 @@ public class CodeQuestMain {
         //TEST SETUP
         game.populateRooms(testRooms);
         game.populateItems(items);
+        game.populatePuzzles(puzzles);
         game.setFirstRoom();
         game.populateHelp(new File("gameData/GameHelp.txt"));
 

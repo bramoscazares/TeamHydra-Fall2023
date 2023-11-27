@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9777b3ce-d905-4aad-86a4-23e63dfb36be" name="Changes" comment="Mike: Added portal var to rooms and rooms.txt, created usePortal class but it does nothing yet">
+    <list default="true" id="9777b3ce-d905-4aad-86a4-23e63dfb36be" name="Changes" comment="Mike: hint request now tells you that you need the puzzle book if you don't have it, puzzle solve checks answer for correctness and tells incorrect players that they can use their book for a hint if they have it">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Room.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CodeQuestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CodeQuestMain.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +71,31 @@
       <option name="project" value="LOCAL" />
       <updated>1701114713424</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Mike: getter and setter for portal, made puzzle hint check for the book, cleaned up puzzle methods to use currentRoom instead of loading the puzzle to a variable to be used two times in that method">
+      <option name="closed" value="true" />
+      <created>1701118454651</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1701118454651</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Mike: hint request now tells you that you need the puzzle book if you don't have it">
+      <option name="closed" value="true" />
+      <created>1701118774841</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701118774841</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Mike: hint request now tells you that you need the puzzle book if you don't have it, puzzle solve checks answer for correctness and tells incorrect players that they can use their book for a hint if they have it">
+      <option name="closed" value="true" />
+      <created>1701119439222</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1701119439222</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -88,6 +111,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Mike: Added portal var to rooms and rooms.txt, created usePortal class but it does nothing yet" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mike: Added portal var to rooms and rooms.txt, created usePortal class but it does nothing yet" />
+    <MESSAGE value="Mike: getter and setter for portal, made puzzle hint check for the book, cleaned up puzzle methods to use currentRoom instead of loading the puzzle to a variable to be used two times in that method" />
+    <MESSAGE value="Mike: hint request now tells you that you need the puzzle book if you don't have it" />
+    <MESSAGE value="Mike: hint request now tells you that you need the puzzle book if you don't have it, puzzle solve checks answer for correctness and tells incorrect players that they can use their book for a hint if they have it" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mike: hint request now tells you that you need the puzzle book if you don't have it, puzzle solve checks answer for correctness and tells incorrect players that they can use their book for a hint if they have it" />
   </component>
 </project>
