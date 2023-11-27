@@ -18,7 +18,12 @@ public class Controller {
     private ArrayList<File> gameFiles = new ArrayList<>();  //Brian
     private HashMap<String,File> gameFilesAlt = new HashMap<>();  //Brian
 
+
+    private String saveFile;
+
     private boolean gameOver = false;
+
+    private boolean Continue = false;
 
     public Controller(Game game, Display display){
         this.game = game;
@@ -29,7 +34,7 @@ public class Controller {
 
     public void startGame() throws FileNotFoundException{
         while (!gameOver) {
-
+            gameLoad();
             //Prints room description
             //display.displayRoomInfo(game.getCurrentRoom());
             game.printRoomName(); // Mike: pulling room name from game through controller to pass to display was too much hassle
@@ -145,7 +150,7 @@ public class Controller {
 
 
     private void saveGame(){
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("test.dat"))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(this.saveFile))) {
             oos.writeObject(game);
             Display.gameSaveSuccess();
 
@@ -156,7 +161,7 @@ public class Controller {
     }
 
     private void loadGame(){
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("test.dat"))) {
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(this.saveFile))) {
             game = (Game) ois.readObject();
             Display.gameLoadSuccess();
         } catch (IOException | ClassNotFoundException e) {
@@ -164,6 +169,50 @@ public class Controller {
             System.out.println("\nGame load failed.");
         }
 
+    }
+
+    private void gameLoad() {
+        File saveFiles = new File("SaveFiles");
+        String[] saves = saveFiles.list();
+        while (true) {
+
+            //display.newOrLoadGame(); //brian
+            String userInput = input.nextLine(); //brian
+
+            if (userInput.equalsIgnoreCase("new player")) {
+                //display.newUserName();
+
+                while (true) {
+                    String userName = input.nextLine(); //brian
+                    this.saveFile = userName + ".dat";
+                    File save = new File(saveFiles, this.saveFile);
+                    if (save.exists() || (userName.length() >= 15)) {
+                        //display.displayInvalidUsername();
+                    } else {
+                        return;
+                    }
+                }
+
+            } else if (userInput.equalsIgnoreCase("load player")) {
+                if (saves != null && saves.length == 0) {
+                   //display.noSavesExists();
+                } else {
+                    //display.loadUserName();
+                    String userName = input.nextLine(); //brian
+                    String saveString = userName + ".dat";
+                    File save = new File(saveFiles, saveString);
+                    if (save.exists()) {
+                        this.saveFile = saveString;
+                        loadGame();
+                        return;
+                    } else {
+                        //display.displayInvalidUsername();
+                    }
+                }
+            } else {
+                display.printInvaldInput();
+            }
+        }
     }
 
 
