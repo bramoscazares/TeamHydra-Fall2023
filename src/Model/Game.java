@@ -45,9 +45,10 @@ public class Game  implements Serializable {
             int roomEast = Integer.parseInt(tempArray[5]);  // Mike: swapped these because when I put the codequest rooms in it was in nesw format
             int roomSouth = Integer.parseInt(tempArray[6]);
             int roomWest = Integer.parseInt(tempArray[7]);
+            int portalRoom = Integer.parseInt(tempArray[8]);
 
             //Adds room to room array  Mike: swapped order of these because when I put the codequest rooms in it was in nesw format
-            this.roomLinkedList.add(new Room(roomNum,roomName,roomDescription,roomVisited,roomNorth,roomEast,roomSouth,roomWest));
+            this.roomLinkedList.add(new Room(roomNum,roomName,roomDescription,roomVisited,roomNorth,roomEast,roomSouth,roomWest, portalRoom));
         }
 
     }
@@ -245,6 +246,10 @@ public class Game  implements Serializable {
             default:
                 return false;
         }
+    }
+
+    public boolean usePortal(){
+
     }
 
     public void printRoomName(){ // Mike: better than a block of code in game controller and display to do the same thing

@@ -30,8 +30,10 @@ public class Room implements Serializable {
 
     private Monster monster;
 
+    private int portal;
+
     // Constructor
-    public Room(int room, String name, String desc, boolean visited, int north, int east, int south, int west) {
+    public Room(int room, String name, String desc, boolean visited, int north, int east, int south, int west, int portal) {
         this.id = room;
         this.name = name;
         this.desc = desc;
@@ -40,6 +42,7 @@ public class Room implements Serializable {
         this.east = east;
         this.south = south;
         this.west = west;
+        this.portal = portal;
     }
 
 
