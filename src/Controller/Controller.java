@@ -143,28 +143,30 @@ public class Controller {
         //Player already typed attack at this point. boolean initial lets us skip first input Query
         String userInput = "attack";
         boolean initial = true;
-        boolean sickoMode = true;
         String monName = game.getRoomMonsterName();
 
 
-        while (sickoMode) {
-            if (initial) initial = false; //skips first userInput
+        while (true) {
+
+            //Query User Input ("attack" or "run"), but skip first time
+            if (initial) initial = false;
             else {
                 display.combatQuery();
                 userInput = input.nextLine().toLowerCase();
             }
 
+            //Input determination
             switch (userInput) {
                 case "attack":
                     try {
-                        if (game.attackSequence()) {
-                            display.playerDeath(monName);
-                            return true;
-                        }
-                        display.combatStatus(2, 3);
-                    } catch (monDeathEvent fatality) {
+                        Integer[] HPs = game.attackSequence();
+                        display.combatStatus(HPs[0], HPs[1]); //TEST, FILL WITH ACTUAL VALUES
+                    } catch (monDeathEvent ded) {
                         display.monDeath(monName);
-                        sickoMode = false;
+                        return false;
+                    } catch (playerDeathEvent ded) {
+                        display.playerDeath(monName);
+                        return true;
                     }
 
                     //Technically, there is no print msg upon attack, only a "status" display msg after each sequence showing stats of both.
@@ -175,16 +177,13 @@ public class Controller {
                 case "run":
                     game.runAway();
                     display.runAway(monName);
-                    sickoMode = false;
-                    break;
+                    return false;
 
                 default:
                     display.printInvaldInput();
                     break;
             }//end switch(userInput)
         }//end loop while()
-
-        return false;
     }//end combat(), entire by Mo (i'm such a legend, ik, yes need to thank me)
 
 

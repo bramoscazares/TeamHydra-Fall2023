@@ -215,29 +215,35 @@ public class Game {
     }
 
     public boolean move(char direction){ // By Mike
+        Room tempCurrRoom = currentRoom; //Mo, stores temp, for use in flee/run/prevRoom
+
         switch(direction) {
             case 'n':
                 if (currentRoom.getNorth() > 0){ //checks for if a room exist in direction
                     currentRoom.setVisited(true); // if there is a room current room will chang so mark this room as visited
                     currentRoom = roomLinkedList.get( currentRoom.getNorth()-1); // move to the room found earlier
+                    prevRoom = tempCurrRoom; //Mo, sets prevRoom to former current room
                     return true; //make sure we pass back that we moved in the boolean return
                 } else {return false;} // return false if we couldn't move due to room not existing
             case 'e':
                 if (currentRoom.getEast() > 0){
                     currentRoom.setVisited(true);
                     currentRoom = roomLinkedList.get(currentRoom.getEast()-1);
+                    prevRoom = tempCurrRoom; //Mo, just this line
                     return true;
                 } else {return false;}
             case 's':
                 if (currentRoom.getSouth() > 0){
                     currentRoom.setVisited(true);
                     currentRoom = roomLinkedList.get(currentRoom.getSouth()-1);
+                    prevRoom = tempCurrRoom; //Mo, just this line
                     return true;
                 } else {return false;}
             case 'w':
                 if (currentRoom.getWest() > 0){
                     currentRoom.setVisited(true);
                     currentRoom = roomLinkedList.get(currentRoom.getWest()-1);
+                    prevRoom = tempCurrRoom; //Mo, just this line
                     return true;
                 } else {return false;}
             default:
@@ -356,11 +362,14 @@ public class Game {
 
     }//end mInfo(), Mohammed
 
-    public boolean attackSequence() throws monDeathEvent {//Entire, Mo the bro: True when player.isDefeat()
+    public Integer[] attackSequence() throws monDeathEvent, playerDeathEvent {//Entire, Mo the bro: Returns int[] of Plyr & Mon HP
+
         Monster mon = currentRoom.getMonster();
 
-        //Plyr attacks Mon. If Mon survives, then it counterattacks,
-        // otherwise, remove Mon from room & throw to notify Game>combatInterface() of Mon defeat
+
+        //Plyr attacks Mon.
+        // If Mon dies, remove from room, throw to notify Game>combatInterface() of Mon defeat
+        // otherwise, it counterattacks
         player.attackIsKilled(mon);
 
         if (mon.defeat) {
@@ -369,7 +378,17 @@ public class Game {
         }
         else mon.attackIsKilled(player);
 
-        return player.defeat;
+
+        // If Player dies, throw to notify
+        if (player.defeat) {
+            throw new playerDeathEvent();
+        }
+
+
+        //Store & return HP stats
+        int monHP = mon.getHealthPoints();
+        int plyrHP = player.getHealthPoints();
+        return new Integer[]{plyrHP, monHP};
 
     }//end attackSequence(), entire by Mo (i'm such a legend, ik, yes need to thank me)
 
