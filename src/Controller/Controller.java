@@ -33,8 +33,9 @@ public class Controller {
     }
 
     public void startGame() throws FileNotFoundException{
+        gameLoad(); //Brian
+        display.printSeperator(); //Brian
         while (!gameOver) {
-            gameLoad();
             //Prints room description
             //display.displayRoomInfo(game.getCurrentRoom());
             game.printRoomName(); // Mike: pulling room name from game through controller to pass to display was too much hassle
@@ -171,7 +172,8 @@ public class Controller {
 
     }
 
-    private void gameLoad() {
+    private void gameLoad() { //ENTIRE METHOD: Brian
+
         File saveFiles = new File("SaveFiles");
         String[] saves = saveFiles.list();
         while (true) {
@@ -184,11 +186,12 @@ public class Controller {
 
                 while (true) {
                     String userName = input.nextLine(); //brian
-                    this.saveFile = userName + ".dat";
-                    File save = new File(saveFiles, this.saveFile);
+                    String userNameFile = userName + ".dat";
+                    File save = new File(saveFiles, userNameFile);
                     if (save.exists() || (userName.length() >= 15)) {
                         display.displayInvalidUsername();
                     } else {
+                        this.saveFile = "SaveFiles/"+userNameFile;
                         return;
                     }
                 }
@@ -197,13 +200,14 @@ public class Controller {
                 if (saves != null && saves.length == 0) {
                    display.noSavesExists();
                 } else {
+                    display.printSaveFiles(saves);
                     display.loadUserName();
                     String userName = input.nextLine(); //brian
                     String saveString = userName + ".dat";
                     File save = new File(saveFiles, saveString);
 
                     if (save.exists()) {
-                        this.saveFile = saveString;
+                        this.saveFile = "SaveFiles/"+saveString;
                         loadGame();
                         return;
                     } else {

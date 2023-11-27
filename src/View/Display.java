@@ -45,8 +45,8 @@ public class Display {
     public void newOrLoadGame() {
         System.out.println("Are you a new player or returning?");
         System.out.println("Enter 'new player' to start a new game.");
-        System.out.println("Enter 'load player' to load a save file.\n");
-        System.out.println("Enter 'help' for more options.");
+        System.out.println("Enter 'load player' to load a save file.");
+        System.out.println("Enter 'help' for more options.\n");
     }
 
     public void newUserName() {
@@ -65,6 +65,17 @@ public class Display {
 
     public void loadUserName() {
         System.out.print("Enter a username to load a game:");
+        System.out.println();
+    }
+
+    public void printSaveFiles(String[] saves) {
+        printSeperator();
+        System.out.println("These are "+ saves.length+" available saves.");
+        System.out.println("Usernames:");
+        for(String s : saves){
+            System.out.println(s.replace(".dat",""));
+
+        }
         System.out.println();
     }
 }
