@@ -374,6 +374,8 @@ public class Game  implements Serializable {
         if (puz == null) System.out.println("There is not a puzzle in this room.");
         else {
 
+        }
+    }
     public void mInfo() { // Entirely Mo: method for m-info command, returns Info
         Room Lcn = this.currentRoom;
         Monster Mon = Lcn.getMonster();
