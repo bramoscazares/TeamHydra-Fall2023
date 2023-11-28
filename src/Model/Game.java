@@ -125,8 +125,9 @@ public class Game  implements Serializable {
             int MonHP      = Integer.parseInt(tempArray[3]);
             int MonATK     = Integer.parseInt(tempArray[4]);
             int LcnRoomID  = Integer.parseInt(tempArray[5]);
+            boolean monDefeat = Boolean.parseBoolean(tempArray[6]);// Brian
 
-            this.roomLinkedList.get(LcnRoomID - 1).setMonster(new Monster(monID,monName,monDesc,LcnRoomID,MonHP,MonATK, false));
+            this.roomLinkedList.get(LcnRoomID - 1).setMonster(new Monster(monID,monName,monDesc,LcnRoomID,MonHP,MonATK, monDefeat));
         }//end while
 
     }//end populateMons(), by Mohammed
