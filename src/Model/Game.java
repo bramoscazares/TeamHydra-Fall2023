@@ -17,9 +17,10 @@ public class Game  implements Serializable {
 
     private ArrayList<Item> itemArrayList = new ArrayList<>();
 
-    private Player player = new Player("P1","Generic","This is a generic description.",1,100,100,false);  //Brian
+    private Player player = new Player("P1","Generic","This is a generic description.",1,100,10,false);  //Brian
 
     private Room currentRoom; //Brian
+    private Room prevRoom;
     private transient FileInputStream inputStream; //Brian
     private transient Scanner fileIn; //Brian
 
@@ -103,15 +104,14 @@ public class Game  implements Serializable {
             String[] tempArray = fileIn.nextLine().split("=");
 
             //Mo: assigns parts of file line to temp variables, then variables into Monster constructor
-            String monID = tempArray[0];
+            String monID   = tempArray[0];
             String monName = tempArray[1];
             String monDesc = tempArray[2];
-            int LcnRoomID = Integer.parseInt(tempArray[3]);
-            int MonHP = Integer.parseInt(tempArray[4]);
-            int MonATK = Integer.parseInt(tempArray[5]);
-            boolean MonDefeat = Boolean.parseBoolean(tempArray[6]);// Brian
+            int MonHP      = Integer.parseInt(tempArray[3]);
+            int MonATK     = Integer.parseInt(tempArray[4]);
+            int LcnRoomID  = Integer.parseInt(tempArray[5]);
 
-            this.roomLinkedList.get(LcnRoomID).setMonster(new Monster(monID,monName,monDesc,LcnRoomID,MonHP,MonATK,MonDefeat)); //Brian
+            this.roomLinkedList.get(LcnRoomID - 1).setMonster(new Monster(monID,monName,monDesc,LcnRoomID,MonHP,MonATK));
         }//end while
 
     }//end populateMons(), by Mohammed
@@ -217,29 +217,35 @@ public class Game  implements Serializable {
     }
 
     public boolean move(char direction){ // By Mike
+        Room tempCurrRoom = currentRoom; //Mo, stores temp, for use in flee/run/prevRoom
+
         switch(direction) {
             case 'n':
                 if (currentRoom.getNorth() > 0){ //checks for if a room exist in direction
                     currentRoom.setVisited(true); // if there is a room current room will chang so mark this room as visited
                     currentRoom = roomLinkedList.get( currentRoom.getNorth()-1); // move to the room found earlier
+                    prevRoom = tempCurrRoom; //Mo, sets prevRoom to former current room
                     return true; //make sure we pass back that we moved in the boolean return
                 } else {return false;} // return false if we couldn't move due to room not existing
             case 'e':
                 if (currentRoom.getEast() > 0){
                     currentRoom.setVisited(true);
                     currentRoom = roomLinkedList.get(currentRoom.getEast()-1);
+                    prevRoom = tempCurrRoom; //Mo, just this line
                     return true;
                 } else {return false;}
             case 's':
                 if (currentRoom.getSouth() > 0){
                     currentRoom.setVisited(true);
                     currentRoom = roomLinkedList.get(currentRoom.getSouth()-1);
+                    prevRoom = tempCurrRoom; //Mo, just this line
                     return true;
                 } else {return false;}
             case 'w':
                 if (currentRoom.getWest() > 0){
                     currentRoom.setVisited(true);
                     currentRoom = roomLinkedList.get(currentRoom.getWest()-1);
+                    prevRoom = tempCurrRoom; //Mo, just this line
                     return true;
                 } else {return false;}
             default:
@@ -368,16 +374,59 @@ public class Game  implements Serializable {
         if (puz == null) System.out.println("There is not a puzzle in this room.");
         else {
 
-    }}
-    public void mInfo() { // Mo: method for m-info command, returns Info
-        Room Lcn = this.roomLinkedList.get(this.player.getRoomLocation());
+    public void mInfo() { // Entirely Mo: method for m-info command, returns Info
+        Room Lcn = this.currentRoom;
         Monster Mon = Lcn.getMonster();
-        if (Mon == null) System.out.println("There is no monster in this room.");
-        else {
-            System.out.println("Name: " + Mon.getName());
-            System.out.println(Mon.getDescription());
-            System.out.println("HP: " + Mon.getHealthPoints());
-            System.out.println("ATK: " + Mon.getAttackPoints());
-        }//end if else
+
+        //print Monster Details
+        System.out.println("Name: " + Mon.getName());
+        System.out.println(Mon.getDescription());
+        System.out.println("HP: " + Mon.getHealthPoints());
+        System.out.println("ATK: " + Mon.getAttackPoints());
+        //NEED TO PRINT MONSTER POWERS HERE AS WELL
+
     }//end mInfo(), Mohammed
-}
+
+    public Integer[] attackSequence() throws monDeathEvent, playerDeathEvent {//Entire, Mo the bro: Returns int[] of Plyr & Mon HP
+
+        Monster mon = currentRoom.getMonster();
+
+
+        //Plyr attacks Mon.
+        // If Mon dies, remove from room, throw to notify Game>combatInterface() of Mon defeat
+        // otherwise, it counterattacks
+        player.attackIsKilled(mon);
+
+        if (mon.defeat) {
+            currentRoom.setMonster(null); //removes mon from room
+            throw new monDeathEvent(mon.getName());
+        }
+        else mon.attackIsKilled(player);
+
+
+        // If Player dies, throw to notify
+        if (player.defeat) {
+            throw new playerDeathEvent();
+        }
+
+
+        //Store & return HP stats
+        int monHP = mon.getHealthPoints();
+        int plyrHP = player.getHealthPoints();
+        return new Integer[]{plyrHP, monHP};
+
+    }//end attackSequence(), entire by Mo (i'm such a legend, ik, yes need to thank me)
+
+    public void runAway() {//Entire, Mo: Plyr moves to prevRoom, updates prevRoom
+        Room monRoom = currentRoom;
+        currentRoom = prevRoom;
+        prevRoom = monRoom;
+    }//end runAway() by Mo
+
+    public String getRoomMonsterName() {//Entire, Mo: we REALLY need access to Monster name from Controller
+        return currentRoom.getMonster().getName();
+    }
+
+
+
+}//end Class Game

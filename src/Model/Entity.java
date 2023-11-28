@@ -22,9 +22,14 @@ public class Entity extends GameObject{
         return healthPoints;
     }
 
-    public void setHealthPoints(int healthPoints) {
+    public boolean setHealthPoints(int healthPoints) {
         this.healthPoints = healthPoints;
-    }
+
+        //end if{}, Mo
+        if (this.healthPoints <= 0) this.defeat = true; //Mo
+        return defeat;
+    }//end setHealthPoints()
+
 
     public int getAttackPoints() {
         return attackPoints;
@@ -33,6 +38,14 @@ public class Entity extends GameObject{
     public void setAttackPoints(int attackPoints) {
         this.attackPoints = attackPoints;
     }
+
+    public void changeAttackPoints(int ATKChange) {//Entire, Mo.
+        this.attackPoints += ATKChange;
+        if (this.attackPoints < 0) throw new RuntimeException(this.getClass().getName() + " Entity " + this.getName() + " attackPoints < 0. Okay, someone did something wrong. Why is ATK < 0?");
+        //Mo: normally if ATK < 0 I'd just set it to 0.
+        // But, in this case, this should never happen.
+        // Something went seriously wrong if it does.
+    }//end changeAttackPoints() by Mo
 
     public boolean isDefeat() {
         return defeat;
@@ -45,4 +58,16 @@ public class Entity extends GameObject{
     public ArrayList<Item> getInventory() {
         return inventory;
     }
+
+
+    public boolean takeDamage(int HPdmg) {//entire, Mo: True when HP<=0
+        this.healthPoints -= HPdmg;
+
+        if (this.healthPoints <= 0) this.defeat = true;
+        return this.defeat;
+    }//end changeHealthPoints() by Mo
+
+    public boolean attackIsKilled(Entity target) {//Entire, Mo: True when target.isDefeat().
+        return target.takeDamage(this.attackPoints);
+    }//end attackKill() by Mo
 }

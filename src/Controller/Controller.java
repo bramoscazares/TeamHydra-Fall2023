@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.Game;
+import Model.*;
 import View.Display;
 
 
@@ -36,6 +36,7 @@ public class Controller {
         gameLoad(); //Brian
         display.printSeperator(); //Brian
         while (!gameOver) {
+
             //Prints room description
             //display.displayRoomInfo(game.getCurrentRoom());
             game.printRoomName(); // Mike: pulling room name from game through controller to pass to display was too much hassle
@@ -77,9 +78,12 @@ public class Controller {
         } else if (wordyCommand[0].equalsIgnoreCase("search")){ // needed a user command thing that worked
             game.searchRoom(wordyCommand);
         } else if (input.equalsIgnoreCase("isVisitedRoom")) {
-            game.isVisitedRoom();
-        } else if (input.equalsIgnoreCase("m-info")){ // Mike: Stopped adding in front of this else
-            game.mInfo();
+            game.isVisitedRoom(); // Mike: Stopped adding in front of this else
+        } else if (input.equalsIgnoreCase("m-info")){ //else block by Mo
+            try {game.mInfo();}
+            catch (NullPointerException nullEx) {
+                display.noMonster();
+            } //end Mo's block
         } else if (input.equalsIgnoreCase("help")){  //Brian
             help(); //Brian
         } else if (input.startsWith("pick")){ //Juan
@@ -88,7 +92,7 @@ public class Controller {
             game.dropItem(item); //Juan
         } else if (input.startsWith("use")){ //Juan
             game.useItem(item); //Juan
-        } else if (input.contains("open")) { //juan
+        } else if (input.contains("open")){ //Juan
             game.openInventory(); //Juan
         } else if (input.startsWith("hint")){ //Juan
                 game.hint(); //Juan
@@ -100,6 +104,10 @@ public class Controller {
             saveGame(); //Brian
         }  else if (input.contains("load")){ //Brian
             loadGame(); //Brian
+        } else if (input.equalsIgnoreCase("attack")) { //Mo, this entire else block and try/catch chain
+            try {combatInterface();} //Mo: True if player dies in combat()
+            catch (NullPointerException nullMonster) {display.noMonster();} //Mo: careful, catches *any* nullExpn, not just Mons
+           //end Mo's Block
         } else {
             display.printInvaldInput(); //Brian
         }
@@ -153,6 +161,54 @@ public class Controller {
             userInput = input.nextLine();  //Brian
         }
     }
+
+
+    public boolean combatInterface() {//Entire, Mo the bro. True when Player dies
+        //Player already typed attack at this point. boolean initial lets us skip first input Query
+        String userInput = "attack";
+        boolean initial = true;
+        String monName = game.getRoomMonsterName();
+
+
+        while (true) {
+
+            //Query User Input ("attack" or "run"), but skip first time
+            if (initial) initial = false;
+            else {
+                display.combatQuery();
+                userInput = input.nextLine().toLowerCase();
+            }
+
+            //Input determination
+            switch (userInput) {
+                case "attack":
+                    try {
+                        Integer[] HPs = game.attackSequence();
+                        display.combatStatus(HPs[0], HPs[1]); //TEST, FILL WITH ACTUAL VALUES
+                    } catch (monDeathEvent ded) {
+                        display.monDeath(monName);
+                        return false;
+                    } catch (playerDeathEvent ded) {
+                        display.playerDeath(monName);
+                        return true;
+                    }
+
+                    //Technically, there is no print msg upon attack, only a "status" display msg after each sequence showing stats of both.
+//                    display.playerAttack();
+//                    display.monAttack();
+                    break;
+
+                case "run":
+                    game.runAway();
+                    display.runAway(monName);
+                    return false;
+
+                default:
+                    display.printInvaldInput();
+                    break;
+            }//end switch(userInput)
+        }//end loop while()
+    }//end combat(), entire by Mo (i'm such a legend, ik, yes need to thank me)
 
 
 
