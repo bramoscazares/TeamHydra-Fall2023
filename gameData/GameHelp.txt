@@ -28,5 +28,6 @@ explore puzzle          This command will give you a full description of the puz
 solve                   Type the solution to the puzzle after solve with a space to attempt to solve the puzzle
 hint                    If you have the appropriate item, you can get a hint about the puzzle in the room if there is one
 isVisitedRoom           This will inform you if you have visited a room or not.
+enter portal            After solving all puzzles and defeating all foes in an area try to enter the portal at the final area.
 m-info                  If the room contains a monster, this will give you the monster's full description as well as HP and ATK.
 
