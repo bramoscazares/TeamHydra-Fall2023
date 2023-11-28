@@ -414,7 +414,7 @@ public class Game  implements Serializable {
 
     public void solve(String solution){ //Xavier bulk some additions by mike
         if (currentRoom.getRoomPuzzle() == null) System.out.println("There are no puzzles in this room.");
-        else if (solution.equals(currentRoom.getRoomPuzzle().getAnswer()))
+        else if (solution.equalsIgnoreCase(currentRoom.getRoomPuzzle().getAnswer()))
         {
             System.out.println("Your answer ís correct");
             currentRoom.getRoomPuzzle().setSolved(true);
@@ -426,7 +426,6 @@ public class Game  implements Serializable {
                 }
             }
         }
-        System.out.println(currentRoom.getRoomPuzzle().getAnswer());
     }
 
 
