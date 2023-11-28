@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9777b3ce-d905-4aad-86a4-23e63dfb36be" name="Changes" comment="Mike: made populate rooms add portal checklist to rooms with portals from the portal checklist.txt, added getter and setter for portalCheck array">
+    <list default="true" id="9777b3ce-d905-4aad-86a4-23e63dfb36be" name="Changes" comment="Mike: fixed game 128 mon defeate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/CodeQuestMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/CodeQuestMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/Model/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/Model/Entity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/testData/testMonsters.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CodeQuestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CodeQuestMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +151,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701127322762</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Mike: fixed game 128 mon defeate">
+      <option name="closed" value="true" />
+      <created>1701134113692</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1701134113692</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -172,6 +184,7 @@
     <MESSAGE value="Mike: add setup to pull multiple word string from input after a first word added hint and solve to help.txt" />
     <MESSAGE value="Mike: made portal checklist.txt to control portal access" />
     <MESSAGE value="Mike: made populate rooms add portal checklist to rooms with portals from the portal checklist.txt, added getter and setter for portalCheck array" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mike: made populate rooms add portal checklist to rooms with portals from the portal checklist.txt, added getter and setter for portalCheck array" />
+    <MESSAGE value="Mike: fixed game 128 mon defeate" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mike: fixed game 128 mon defeate" />
   </component>
 </project>

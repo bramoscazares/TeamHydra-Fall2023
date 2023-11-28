@@ -94,11 +94,11 @@ public class Controller {
         } else if (input.equalsIgnoreCase("help")){  //Brian
             help(); //Brian
         } else if (input.startsWith("pick")){ //Juan
-            game.pickupItem(item); //Juan
+            game.pickupItem(multiword); //Juan
         } else if (input.startsWith("drop")){ //Juan
-            game.dropItem(item); //Juan
+            game.dropItem(multiword); //Juan
         } else if (input.startsWith("use")){ //Juan
-            game.useItem(item); //Juan
+            game.useItem(multiword); //Juan
         } else if (input.contains("open")){ //Juan
             game.openInventory(); //Juan
         } else if (input.startsWith("hint")){ //Juan
@@ -153,12 +153,14 @@ public class Controller {
         String[] listString = input.split(" ");
         String secondpart = "";
         int length = listString.length;
-        for (int i = 1; i < length; i++) {
-            secondpart = secondpart + listString[i];
-            if ((i+1)!=length){
-                secondpart = secondpart + " ";
+        if (listString.length > 1){
+            for (int i = 1; i < length; i++) {
+                secondpart = secondpart + listString[i];
+                if ((i+1)!=length){
+                    secondpart = secondpart + " ";
+                }
             }
-        }
+        } else { secondpart = listString[0];}
         return secondpart;
     }
 
