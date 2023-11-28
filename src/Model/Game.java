@@ -125,9 +125,8 @@ public class Game  implements Serializable {
             int MonHP      = Integer.parseInt(tempArray[3]);
             int MonATK     = Integer.parseInt(tempArray[4]);
             int LcnRoomID  = Integer.parseInt(tempArray[5]);
-            boolean MonDefeat = Boolean.parseBoolean(tempArray[6]);// Brian
 
-            this.roomLinkedList.get(LcnRoomID - 1).setMonster(new Monster(monID,monName,monDesc,LcnRoomID,MonHP,MonATK, MonDefeat));
+            this.roomLinkedList.get(LcnRoomID - 1).setMonster(new Monster(monID,monName,monDesc,LcnRoomID,MonHP,MonATK, false));
         }//end while
 
     }//end populateMons(), by Mohammed
@@ -411,6 +410,7 @@ public class Game  implements Serializable {
             System.out.println("puzzle description: " + currentRoom.getRoomPuzzle().getDescription());
         }
     }
+
     public void solve(String solution){ //Xavier bulk some additions by mike
         if (currentRoom.getRoomPuzzle() == null) System.out.println("There are no puzzles in this room.");
         else if (solution.equals(currentRoom.getRoomPuzzle().getAnswer()))
@@ -428,8 +428,8 @@ public class Game  implements Serializable {
         System.out.println(currentRoom.getRoomPuzzle().getAnswer());
     }
 
-        }
-    }
+
+
     public void mInfo() { // Entirely Mo: method for m-info command, returns Info
         Room Lcn = this.currentRoom;
         Monster Mon = Lcn.getMonster();
