@@ -40,7 +40,7 @@ public class CodeQuestMain {
         game.setFirstRoom();
         game.populateHelp(new File("gameData/GameHelp.txt"));
 
-        //game.fillrooms();
+        game.fillrooms();
 
         //Game Start
         controller.startGame();

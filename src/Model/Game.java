@@ -92,9 +92,9 @@ public class Game  implements Serializable {
             }
             
         }
-        for (Item i : itemArrayList) { //Mike: Put the items in the rooms
-            roomLinkedList.get(i.getRoomLocation()-1).addItem(i);
-        }
+        //for (Item i : itemArrayList) { //Mike: Put the items in the rooms
+        //    roomLinkedList.get(i.getRoomLocation()-1).addItem(i);
+        //}
         
     }
 
