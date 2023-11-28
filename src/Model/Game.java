@@ -263,7 +263,24 @@ public class Game  implements Serializable {
     }
 
     public boolean usePortal(){
-        return true;
+        boolean passPortal = true;
+        if (currentRoom.getPortal() == 0){
+            System.out.println("There is no portal in this room.");
+            return false;
+        } else {
+            for (int i = 0; i < currentRoom.getPortalCheck().length; i++) {
+                if(roomLinkedList.get(i).getMonster() != null || (roomLinkedList.get(i).getRoomPuzzle() != null && !roomLinkedList.get(i).getRoomPuzzle().isSolved())){
+                    passPortal = false;
+                }
+            }
+        }
+        if (passPortal){
+            currentRoom = roomLinkedList.get(currentRoom.getPortal()-1);
+            System.out.println("You pass through the portal into a new realm full of exciting challenges.");
+            return true;
+        }
+        System.out.println("The portal is this room is inactive until you defeat all the challenges in this area.");
+        return false;
     }
 
     public void printRoomName(){ // Mike: better than a block of code in game controller and display to do the same thing
@@ -389,18 +406,19 @@ public class Game  implements Serializable {
     }
     public void solve(String solution){ //Xavier bulk some additions by mike
         if (currentRoom.getRoomPuzzle() == null) System.out.println("There are no puzzles in this room.");
-        else if (solution == currentRoom.getRoomPuzzle().getAnswer())
+        else if (solution.equals(currentRoom.getRoomPuzzle().getAnswer()))
         {
             System.out.println("Your answer ís correct");
             currentRoom.getRoomPuzzle().setSolved(true);
         } else {
             System.out.println("Your answer is incorrect. Try again");
             for (Item item : player.playerInventory) {
-                if (item.getObjectId() == "A2"){
+                if (item.getObjectId().matches("A2")){
                     System.out.println("You can use the support item to get the hint");
                 }
             }
         }
+        System.out.println(currentRoom.getRoomPuzzle().getAnswer());
     }
 
     public void mInfo() { // Mo: method for m-info command, returns Info
