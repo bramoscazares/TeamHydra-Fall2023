@@ -4,25 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9777b3ce-d905-4aad-86a4-23e63dfb36be" name="Changes" comment="">
+    <list default="true" id="9777b3ce-d905-4aad-86a4-23e63dfb36be" name="Changes" comment="Mike: fixed game 128 mon defeate">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/CodeQuestMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/CodeQuestMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/Model/Entity.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/Model/Entity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/TeamHydra-Fall2023/testData/testMonsters.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CodeQuestMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CodeQuestMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Room.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Room.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/Display.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/Display.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="Portals" />
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2YUxb4ASJeK2hkYJIx14uucd2lw" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -45,6 +58,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.CodeQuestMain" />
+        <item itemvalue="Application.CodeQuestMain" />
       </list>
     </recent_temporary>
   </component>
@@ -57,6 +71,95 @@
       <option name="presentableId" value="Default" />
       <updated>1700594027832</updated>
     </task>
+    <task id="LOCAL-00001" summary="Mike: Added portal var to rooms and rooms.txt, created usePortal class but it does nothing yet">
+      <option name="closed" value="true" />
+      <created>1701114713424</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1701114713424</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Mike: getter and setter for portal, made puzzle hint check for the book, cleaned up puzzle methods to use currentRoom instead of loading the puzzle to a variable to be used two times in that method">
+      <option name="closed" value="true" />
+      <created>1701118454651</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1701118454651</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Mike: hint request now tells you that you need the puzzle book if you don't have it">
+      <option name="closed" value="true" />
+      <created>1701118774841</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701118774841</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Mike: hint request now tells you that you need the puzzle book if you don't have it, puzzle solve checks answer for correctness and tells incorrect players that they can use their book for a hint if they have it">
+      <option name="closed" value="true" />
+      <created>1701119439222</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1701119439222</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Mike: added calls to  populatepuzzles and puzzle file stuff to the codequest main">
+      <option name="closed" value="true" />
+      <created>1701120067397</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1701120067397</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Mike: fixed puzzles.txt">
+      <option name="closed" value="true" />
+      <created>1701121072318</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1701121072318</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Mike: added explore puzzle command set up to controller and to help.txt">
+      <option name="closed" value="true" />
+      <created>1701124284919</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1701124284919</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Mike: add setup to pull multiple word string from input after a first word added hint and solve to help.txt">
+      <option name="closed" value="true" />
+      <created>1701125534069</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1701125534069</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Mike: made portal checklist.txt to control portal access">
+      <option name="closed" value="true" />
+      <created>1701125804199</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1701125804199</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Mike: made populate rooms add portal checklist to rooms with portals from the portal checklist.txt, added getter and setter for portalCheck array">
+      <option name="closed" value="true" />
+      <created>1701127322762</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1701127322762</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Mike: fixed game 128 mon defeate">
+      <option name="closed" value="true" />
+      <created>1701134113692</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1701134113692</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -69,5 +172,19 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Mike: Added portal var to rooms and rooms.txt, created usePortal class but it does nothing yet" />
+    <MESSAGE value="Mike: getter and setter for portal, made puzzle hint check for the book, cleaned up puzzle methods to use currentRoom instead of loading the puzzle to a variable to be used two times in that method" />
+    <MESSAGE value="Mike: hint request now tells you that you need the puzzle book if you don't have it" />
+    <MESSAGE value="Mike: hint request now tells you that you need the puzzle book if you don't have it, puzzle solve checks answer for correctness and tells incorrect players that they can use their book for a hint if they have it" />
+    <MESSAGE value="Mike: added calls to  populatepuzzles and puzzle file stuff to the codequest main" />
+    <MESSAGE value="Mike: fixed puzzles.txt" />
+    <MESSAGE value="Mike: added explore puzzle command set up to controller and to help.txt" />
+    <MESSAGE value="Mike: add setup to pull multiple word string from input after a first word added hint and solve to help.txt" />
+    <MESSAGE value="Mike: made portal checklist.txt to control portal access" />
+    <MESSAGE value="Mike: made populate rooms add portal checklist to rooms with portals from the portal checklist.txt, added getter and setter for portalCheck array" />
+    <MESSAGE value="Mike: fixed game 128 mon defeate" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mike: fixed game 128 mon defeate" />
   </component>
 </project>

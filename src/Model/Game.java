@@ -46,9 +46,24 @@ public class Game  implements Serializable {
             int roomEast = Integer.parseInt(tempArray[5]);  // Mike: swapped these because when I put the codequest rooms in it was in nesw format
             int roomSouth = Integer.parseInt(tempArray[6]);
             int roomWest = Integer.parseInt(tempArray[7]);
+            int portalRoom = Integer.parseInt(tempArray[8]);
 
             //Adds room to room array  Mike: swapped order of these because when I put the codequest rooms in it was in nesw format
-            this.roomLinkedList.add(new Room(roomNum,roomName,roomDescription,roomVisited,roomNorth,roomEast,roomSouth,roomWest));
+            this.roomLinkedList.add(new Room(roomNum,roomName,roomDescription,roomVisited,roomNorth,roomEast,roomSouth,roomWest, portalRoom));
+        }
+
+        inputStream = new FileInputStream("gameData/portal checklist.txt"); //Mike adding a bit to put in what rooms to check for completion to access portals
+        fileIn = new Scanner(inputStream);
+        while(fileIn.hasNext()){
+            String[] tempArray = fileIn.nextLine().split("=");
+            int portalRoom = Integer.parseInt(tempArray[0]);
+            String[] checkRooms = tempArray[1].split(",");
+            int[] roomsCheck = new int[checkRooms.length];
+            for (int i = 0; i < checkRooms.length; i++) {
+                roomsCheck[i]= Integer.parseInt(checkRooms[i]);
+            }
+
+            roomLinkedList.get(portalRoom-1).setPortalCheck(roomsCheck);
         }
 
     }
@@ -254,6 +269,27 @@ public class Game  implements Serializable {
         }
     }
 
+    public boolean usePortal(){
+        boolean passPortal = true;
+        if (currentRoom.getPortal() == 0){
+            System.out.println("There is no portal in this room.");
+            return false;
+        } else {
+            for (int i = 0; i < currentRoom.getPortalCheck().length; i++) {
+                if(roomLinkedList.get(i).getMonster() != null || (roomLinkedList.get(i).getRoomPuzzle() != null && !roomLinkedList.get(i).getRoomPuzzle().isSolved())){
+                    passPortal = false;
+                }
+            }
+        }
+        if (passPortal){
+            currentRoom = roomLinkedList.get(currentRoom.getPortal()-1);
+            System.out.println("You pass through the portal into a new realm full of exciting challenges.");
+            return true;
+        }
+        System.out.println("The portal is this room is inactive until you defeat all the challenges in this area.");
+        return false;
+    }
+
     public void printRoomName(){ // Mike: better than a block of code in game controller and display to do the same thing
         System.out.println(currentRoom.getName());
     } // By Mike
@@ -351,32 +387,50 @@ public class Game  implements Serializable {
         }
 
     } //Adds Puzzles into an ArrayList
-    public void hint(){
-        Room Lcn = this.roomLinkedList.get(this.player.getRoomLocation());
-        Puzzle puz = Lcn.getRoomPuzzle();
-        if (puz == null) System.out.println("There is not a puzzle in this room.");
+    public void hint(){ //Xavier bulk some additions by mike
+        boolean bookFound = false;
+        if (currentRoom.getRoomPuzzle() == null) System.out.println("There are no puzzles in this room.");
         else
         {
-            System.out.println("the hint for this puzzle is: " + puz.getHint());
+            for (Item item : player.playerInventory) {
+                if (item.getObjectId() == "A2"){
+                    System.out.println("the hint for this puzzle is: " + currentRoom.getRoomPuzzle().getHint());
+                    bookFound = true;
+                }
+            }
+            if (bookFound == false){
+                System.out.println("You need the ”Enchanted Puzzle Book” to get the puzzle hint");
+            }
         }
     }
-    public void explore(){
-        Room Lcn = this.roomLinkedList.get(this.player.getRoomLocation());
-        Puzzle puz = Lcn.getRoomPuzzle();
-        if (puz == null) System.out.println("There is not a puzzle in this room.");
-        else
-        {
-            System.out.println("puzzle description: " + puz.getDescription());
-        }
-    }
-    public void solve(){
-        Room Lcn = this.roomLinkedList.get(this.player.getRoomLocation());
-        Puzzle puz = Lcn.getRoomPuzzle();
-        if (puz == null) System.out.println("There is not a puzzle in this room.");
-        else {
 
+    public void explore(){//Xavier bulk some additions by mike
+        if (currentRoom.getRoomPuzzle() == null) System.out.println("There are no puzzles in this room.");
+        else
+        {
+            System.out.println("puzzle description: " + currentRoom.getRoomPuzzle().getDescription());
         }
     }
+
+    public void solve(String solution){ //Xavier bulk some additions by mike
+        if (currentRoom.getRoomPuzzle() == null) System.out.println("There are no puzzles in this room.");
+        else if (solution.equals(currentRoom.getRoomPuzzle().getAnswer()))
+        {
+            System.out.println("Your answer ís correct");
+            currentRoom.getRoomPuzzle().setSolved(true);
+        } else {
+            System.out.println("Your answer is incorrect. Try again");
+            for (Item item : player.playerInventory) {
+                if (item.getObjectId().matches("A2")){
+                    System.out.println("You can use the support item to get the hint");
+                }
+            }
+        }
+        System.out.println(currentRoom.getRoomPuzzle().getAnswer());
+    }
+
+
+
     public void mInfo() { // Entirely Mo: method for m-info command, returns Info
         Room Lcn = this.currentRoom;
         Monster Mon = Lcn.getMonster();
