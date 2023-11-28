@@ -200,12 +200,12 @@ public class Game  implements Serializable {
         }
     }
     public Item exploreItem(String itemName) { //Juan: Entire Method
-        for (Item item: player.playerInventory) {
-            if (item.getName().equalsIgnoreCase(itemName)) {
-                return item;
-            }
-        }
-        return null;
+    	Item item = findItem(itemName);
+    	if (item != null) {
+    		System.out.println(item.getDescription());
+    	} else {
+    		System.out.println("Item is not in your inventory");
+    	}
     }
 
     public void useItem(String itemName) { //Juan: Entire Method
@@ -226,7 +226,13 @@ public class Game  implements Serializable {
                     player.setAttackPoints(player.getAttackPoints() + item.getAttackPoints());
                     System.out.println(item.getName() + " has been successfully equipped.");
                     return;
-                }
+                } else if (item.type.equalsIgnoreCase("Support")) {
+    				Puzzle currentPuzzle = currentRoom.getRoomPuzzle();
+    				if (item != null) {
+    					System.out.println("Hint : " + currentPuzzle.getHint());
+    					return;
+    				}
+    			}
             }
             System.out.println("This item is not in your inventory");
         }

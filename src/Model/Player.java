@@ -37,4 +37,10 @@ public class Player extends Entity{
     public void setPlayerInventory(ArrayList<Item> playerInventory) {
         this.playerInventory = playerInventory;
     }
+
+    @Override
+    public ArrayList<Item> getInventory() {
+        return playerInventory;
+    }
+
 }

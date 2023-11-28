@@ -109,6 +109,9 @@ public class Controller {
             if(item.equalsIgnoreCase("puzzle")){ //Mike: this needs to be set up to deal with explore puzzle versus explore "item name"
                 game.explore();
             }
+            else if (item.equalsIgnoreCase("item")){
+                game.exploreItem(item);
+            }
         }  else if (input.contains("save")){ //Brian
             saveGame(); //Brian
         }  else if (input.contains("load")){ //Brian
