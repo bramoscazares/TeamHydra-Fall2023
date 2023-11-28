@@ -1,8 +1,8 @@
-M1=Gatekeeper Gorgon=desc=20=4=3
-M2=Syntax Spiynx=This monster will put every spelling bee competitor to shame, for this monster is the master of knowledge. Attacking with words. Where have I seen that before?=150=25=4
-M3=Looping Lizard=While this lizard may look harmless, its tough scales and deadly attacks make it seem a mighty foe.=70=15=5
-M4=Function Fiend=The source of this monster’s power is the rage of every single programmer who has a bug in their code that they can’t seem to fix.=30=10=6
-M5=Byte Behemoth=This 8 feet tall behemoth is made of ones and zeroes and can lash out powerful attacks. Holy cow that’s a big sword.=20=5=9
-M6=Subdirectory Shakespeare=To be or not to be said by this data corrupt playwright. His mere words could shake the room.=400=45=11
-M7=4K Forgemaster=The master of manipulating every tiny pixel. Bless thy eyes with superior 4K video quality.=150=35=14
-M8=Alt+F4=The monster that’s capable of making anyone rage with a single command. Some call him a deity, others a demon.=25=11=16
+M1=Gatekeeper Gorgon=desc=20=4=3=false
+M2=Syntax Spiynx=This monster will put every spelling bee competitor to shame, for this monster is the master of knowledge. Attacking with words. Where have I seen that before?=150=25=4=false
+M3=Looping Lizard=While this lizard may look harmless, its tough scales and deadly attacks make it seem a mighty foe.=70=15=5=false
+M4=Function Fiend=The source of this monster’s power is the rage of every single programmer who has a bug in their code that they can’t seem to fix.=30=10=6=false
+M5=Byte Behemoth=This 8 feet tall behemoth is made of ones and zeroes and can lash out powerful attacks. Holy cow that’s a big sword.=20=5=9=false
+M6=Subdirectory Shakespeare=To be or not to be said by this data corrupt playwright. His mere words could shake the room.=400=45=11=false
+M7=4K Forgemaster=The master of manipulating every tiny pixel. Bless thy eyes with superior 4K video quality.=150=35=14=false
+M8=Alt+F4=The monster that’s capable of making anyone rage with a single command. Some call him a deity, others a demon.=25=11=16=false
