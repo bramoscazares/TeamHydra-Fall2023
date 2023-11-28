@@ -286,12 +286,13 @@ public class Game  implements Serializable {
 
     public boolean usePortal(){
         boolean passPortal = true;
+        int[] portalList = currentRoom.getPortalCheck();
         if (currentRoom.getPortal() == 0){
             System.out.println("There is no portal in this room.");
             return false;
         } else {
-            for (int i = 0; i < currentRoom.getPortalCheck().length; i++) {
-                if(roomLinkedList.get(i).getMonster() != null || (roomLinkedList.get(i).getRoomPuzzle() != null && !roomLinkedList.get(i).getRoomPuzzle().isSolved())){
+            for (int i = 0; i < portalList.length; i++) {
+                if(roomLinkedList.get(portalList[i]-1).getMonster() != null || (roomLinkedList.get(portalList[i]-1).getRoomPuzzle() != null && !(roomLinkedList.get(portalList[i]-1).getRoomPuzzle().isSolved()))){
                     passPortal = false;
                 }
             }
@@ -300,9 +301,10 @@ public class Game  implements Serializable {
             currentRoom = roomLinkedList.get(currentRoom.getPortal()-1);
             System.out.println("You pass through the portal into a new realm full of exciting challenges.");
             return true;
+        } else {
+            System.out.println("The portal is this room is inactive until you defeat all the challenges in this area.");
+            return false;
         }
-        System.out.println("The portal is this room is inactive until you defeat all the challenges in this area.");
-        return false;
     }
 
     public void printRoomName(){ // Mike: better than a block of code in game controller and display to do the same thing
