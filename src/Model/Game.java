@@ -199,13 +199,22 @@ public class Game  implements Serializable {
             }
         }
     }
-    public Item exploreItem(String itemName) { //Juan: Entire Method
+    public void exploreItem(String itemName) { //Juan: Entire Method
     	Item item = findItem(itemName);
     	if (item != null) {
     		System.out.println(item.getDescription());
     	} else {
     		System.out.println("Item is not in your inventory");
     	}
+    }
+
+    public Item findItem(String itemName) { //Juan Wrote this and couldn't get the push to work
+        for (Item item : player.playerInventory) {
+            if (item.getName().equalsIgnoreCase(itemName)) {
+                return item;
+            }
+        }
+        return(null);
     }
 
     public void useItem(String itemName) { //Juan: Entire Method
