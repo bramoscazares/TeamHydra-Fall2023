@@ -24,6 +24,9 @@ E       Move to the room in the east direction, if room exists.
 W       Move to the room in the west direction, if room exists.
 
 search [Room Name]      This command will give you a full description of a room as well as any monsters, items, or puzzles, if present.
+explore puzzle          This command will give you a full description of the puzzle in a room if present.
+solve                   Type the solution to the puzzle after solve with a space to attempt to solve the puzzle
+hint                    If you have the appropriate item, you can get a hint about the puzzle in the room if there is one
 isVisitedRoom           This will inform you if you have visited a room or not.
 m-info                  If the room contains a monster, this will give you the monster's full description as well as HP and ATK.
 

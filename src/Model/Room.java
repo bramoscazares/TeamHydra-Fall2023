@@ -30,8 +30,12 @@ public class Room implements Serializable {
 
     private Monster monster;
 
+    private int portal;
+
+    private int[] portalCheck;
+
     // Constructor
-    public Room(int room, String name, String desc, boolean visited, int north, int east, int south, int west) {
+    public Room(int room, String name, String desc, boolean visited, int north, int east, int south, int west, int portal) {
         this.id = room;
         this.name = name;
         this.desc = desc;
@@ -40,6 +44,7 @@ public class Room implements Serializable {
         this.east = east;
         this.south = south;
         this.west = west;
+        this.portal = portal;
     }
 
 
@@ -101,6 +106,22 @@ public class Room implements Serializable {
 
     public void setMonster(Monster monster) {
         this.monster = monster;}
+
+    public int getPortal() {
+        return portal;
+    }
+
+    public void setPortal(int portal) {
+        this.portal = portal;
+    }
+
+    public int[] getPortalCheck() {
+        return portalCheck;
+    }
+
+    public void setPortalCheck(int[] portalCheck) {
+        this.portalCheck = portalCheck;
+    }
 
     // toString override
     @Override
